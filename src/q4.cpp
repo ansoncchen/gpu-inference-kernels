@@ -41,7 +41,7 @@ static void check_shape(int rows, int cols) {
   if (rows <= 0 || cols <= 0 || cols % kGroup) throw std::invalid_argument("cols must be a positive multiple of 32");
 }
 
-Matrix quantize(const float* a, int rows, int cols) {
+Matrix quantize(const float* a, int rows, int cols, bool search) {
   check_shape(rows, cols);
   Matrix m;
   m.rows = rows, m.cols = cols;
@@ -56,6 +56,22 @@ Matrix quantize(const float* a, int rows, int cols) {
         if (std::fabs(p[j]) > std::fabs(extreme)) extreme = p[j];
       // The largest-magnitude weight maps exactly to -8 (same rule as ggml Q4_0).
       uint16_t h = float_to_half(extreme / -8.0f);
+      if (search && extreme != 0) {
+        double best = 1e300;
+        for (int sign = -1; sign <= 1; sign += 2)
+          for (int i = 0; i <= 24; i++) {
+            uint16_t hc = float_to_half(extreme * sign / (8.0f + 0.25f * (i - 4)));
+            float dc = half_to_float(hc);
+            if (dc == 0) continue;
+            double e = 0;
+            for (int j = 0; j < kGroup; j++) {
+              float q = std::nearbyint(p[j] / dc);
+              q = q < -8 ? -8 : q > 7 ? 7 : q;
+              e += (double)(p[j] - q * dc) * (p[j] - q * dc);
+            }
+            if (e < best) best = e, h = hc;
+          }
+      }
       float d = half_to_float(h), inv = d != 0 ? 1.0f / d : 0.0f;
       m.scale[(size_t)r * m.groups() + g] = h;
       for (int j = 0; j < kGroup; j++) {

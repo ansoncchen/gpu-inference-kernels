@@ -3,7 +3,10 @@
 // kernel. Everything else (norms, RoPE, attention, activation) is shared, so the
 // difference between the two modes is the GEMV.
 //
-// decode <model dir> <fp16|int4> gen <ids file> <n new> <repeats> [out.jsonl]
+// int4 = largest weight of each group maps to -8 (ggml Q4_0 rule); int4s = scale
+// searched per group for the smallest squared error. Same format, same speed.
+// int4sh = int4s, but the output head stays FP16.
+// decode <model dir> <fp16|int4|int4s|int4sh> gen <ids file> <n new> <repeats> [out.jsonl]
 // decode <model dir> <fp16|int4> ppl <ids file> <window> <n windows> [out.jsonl]
 // decode <model dir> <fp16|int4> logits <ids file> <out.bin>
 #include <cublas_v2.h>
@@ -184,7 +187,7 @@ struct Linear {
 
 struct Engine {
   Config c;
-  bool int4;
+  bool int4, search, fp16_head;
   cudaStream_t st;
   cublasHandle_t h;
   void (*gemv_q4)(const GpuMat&, const float*, float*, float*, cudaStream_t) = nullptr;
@@ -215,11 +218,11 @@ struct Engine {
     return p;
   }
 
-  Linear make(const std::vector<float>& w, int cols) {
+  Linear make(const std::vector<float>& w, int cols, bool q4 = true) {
     Linear l;
     l.cols = cols, l.rows = (int)(w.size() / cols);
-    if (int4) {
-      Matrix m = quantize(w.data(), l.rows, cols);
+    if (int4 && q4) {
+      Matrix m = quantize(w.data(), l.rows, cols, search);
       Octet o = to_octet(m);
       l.q4m.rows = l.rows, l.q4m.cols = cols, l.q4m.octets = o.octets, l.q4m.chunks = o.chunks;
       l.q4m.ow = up(o.w), l.q4m.oscale = up(o.scale);
@@ -234,7 +237,7 @@ struct Engine {
     return l;
   }
 
-  Engine(const std::string& dir, bool int4_) : int4(int4_) {
+  Engine(const std::string& dir, bool int4_, bool search_, bool head_) : int4(int4_), search(search_), fp16_head(head_) {
     std::ifstream f(dir + "/config.json");
     std::string j((std::istreambuf_iterator<char>(f)), {});
     auto num = [&](const char* k) { return atoi(j.c_str() + j.find(':', j.find(std::string("\"") + k + "\"")) + 1); };
@@ -272,7 +275,7 @@ struct Engine {
     std::vector<uint16_t> eh(e.size());
     for (size_t i = 0; i < e.size(); i++) eh[i] = float_to_half(e[i]);
     embed = (__half*)up(eh);
-    head = make(e, c.hidden);  // tied embeddings
+    head = make(e, c.hidden, !fp16_head);  // tied embeddings
     x = alloc<float>(c.hidden), nx = alloc<float>(c.hidden), nxh = alloc<__half>(c.hidden);
     qkv_out = alloc<float>(c.hidden * 3), attn_out = alloc<float>(c.hidden), attn_h = alloc<__half>(c.hidden);
     o_out = alloc<float>(c.hidden), gu_out = alloc<float>(c.ffn * 2);
@@ -283,7 +286,7 @@ struct Engine {
   }
 
   void apply(const Linear& l, const float* in, const __half* inh, float* out) {
-    if (int4) {
+    if (!l.fp16) {
       gemv_q4(l.q4m, in, out, nullptr, st);
     } else {
       const float one = 1, zero = 0;
@@ -346,7 +349,7 @@ std::vector<int> read_ids(const char* path) {
 int main(int argc, char** argv) {
   if (argc < 6) return 1;
   std::string mode = argv[2], cmd = argv[3];
-  Engine e(argv[1], mode == "int4");
+  Engine e(argv[1], mode.rfind("int4", 0) == 0, mode.find('s') != std::string::npos, mode.find('h') != std::string::npos);
   auto ids = read_ids(argv[4]);
   if (cmd == "gen") {
     int n_new = atoi(argv[5]), reps = atoi(argv[6]);
@@ -385,6 +388,8 @@ int main(int argc, char** argv) {
     for (int w = 0; w < n && (size_t)(w + 1) * win <= ids.size(); w++) {
       for (int i = 0; i + 1 < win; i++) {
         e.step(ids[w * win + i], i);
+        // Same protocol as llama-perplexity: only the second half of each window counts.
+        if (i < win / 2) continue;
         auto l = e.host_logits();
         double mx = -1e30, sum = 0;
         for (float v : l) mx = std::max(mx, (double)v);

@@ -65,7 +65,9 @@ struct Octet {
 Octet to_octet(const Matrix& m);
 
 // Quantize FP32 row-major weights.
-Matrix quantize(const float* a, int rows, int cols);
+// search = true tries a range of scales per group and keeps the one with the
+// smallest squared error instead of always mapping the extreme weight to -8.
+Matrix quantize(const float* a, int rows, int cols, bool search = false);
 // Random matrix built directly in the quantized domain (all nibbles uniform).
 Matrix random_matrix(int rows, int cols, uint64_t seed);
 std::vector<float> dequantize(const Matrix& m);

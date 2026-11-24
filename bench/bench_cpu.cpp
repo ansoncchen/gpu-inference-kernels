@@ -2,7 +2,7 @@
 // data per pass, so nothing comes from the 32 MB L3).
 // Usage: bench_cpu out.jsonl threads,threads,... q4|blas
 // OpenBLAS is a separate mode: its pthreads would inherit the one-core affinity
-// that OMP_PROC_BIND gives the main thread, which makes it look ~50x too slow.
+// that OMP_PROC_BIND gives the main thread, which makes it look many times too slow.
 #include <cblas.h>
 #include <omp.h>
 

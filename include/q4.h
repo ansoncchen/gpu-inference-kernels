@@ -49,6 +49,21 @@ struct Tiled {
   size_t bytes() const { return w.size() + scale.size() * sizeof(uint16_t); }
 };
 
+// Octet layout: 8 rows x 4 columns per 16-byte block, so that the 32 lanes of a
+// warp read 512 contiguous weight bytes (8 rows x 128 columns) and 512
+// contiguous x bytes (128 floats) at the same time.
+//   weights: [octet][chunk of 128 cols][lane 0..31] 16-byte blocks; 16-bit field
+//            f of a block holds row f, columns 4*lane .. 4*lane+3 (low first)
+//   scales : [octet][group][8 rows] FP16
+// Rows are padded to a multiple of 8 and columns to a multiple of 128.
+struct Octet {
+  int rows = 0, cols = 0, octets = 0, chunks = 0;
+  std::vector<uint8_t> w;
+  std::vector<uint16_t> scale;
+  size_t bytes() const { return w.size() + scale.size() * sizeof(uint16_t); }
+};
+Octet to_octet(const Matrix& m);
+
 // Quantize FP32 row-major weights.
 Matrix quantize(const float* a, int rows, int cols);
 // Random matrix built directly in the quantized domain (all nibbles uniform).

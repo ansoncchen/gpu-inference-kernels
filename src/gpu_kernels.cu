@@ -398,6 +398,76 @@ __global__ void k_loop(const uint4* tw, const uint16_t* ts, const float* x, floa
   }
 }
 
+// ------------------------------------------------------- s8: octet layout
+// Each lane handles 4 columns of 8 rows per 16-byte load, so weights AND x are
+// both read as 512 contiguous bytes per warp. x is cheap to reload from L1 in
+// that form, so nothing has to be kept in registers between rows and the kernel
+// needs no atomics, no memset and few registers. A warp walks `Piece` chunks of
+// 128 columns; a block holds one warp per piece and combines them at the end.
+template <int Prefetch, int Piece, bool Convert>
+__global__ void k_octet(const uint4* ow, const uint4* os, const float4* x, float* y, int chunks, int rows, int cols) {
+  extern __shared__ float part[];  // [pieces][8], only used when pieces > 1
+  int piece = threadIdx.x / 32, lane = threadIdx.x % 32, pieces = blockDim.x / 32;
+  int o = blockIdx.x;
+  const uint4* wr = ow + (size_t)o * chunks * 32 + lane;
+  const uint4* sr = os + (size_t)o * chunks * 4 + lane / 8;
+  int c0 = piece * Piece, c1 = min(chunks, c0 + Piece);
+  float acc[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+  for (int c = c0; c < c1; c += Prefetch) {
+    uint4 v[Prefetch], sv[Prefetch];
+    float4 xv[Prefetch];
+    bool ok[Prefetch];
+#pragma unroll
+    for (int i = 0; i < Prefetch; i++) {
+      ok[i] = c + i < c1 && ((c + i) * 32 + lane) * 4 < cols;
+      if (ok[i]) {
+        v[i] = wr[(c + i) * 32];
+        sv[i] = sr[(c + i) * 4];
+        xv[i] = x[(c + i) * 32 + lane];
+      }
+    }
+#pragma unroll
+    for (int i = 0; i < Prefetch; i++) {
+      if (!ok[i]) break;
+      float4 f = xv[i];
+      float corr = -24.0f * (f.x + f.y + f.z + f.w);
+      uint32_t w4[4] = {v[i].x, v[i].y, v[i].z, v[i].w};
+      uint32_t s4[4] = {sv[i].x, sv[i].y, sv[i].z, sv[i].w};
+#pragma unroll
+      for (int k = 0; k < 4; k++) {
+        uint32_t t = w4[k];
+        float d0, d1;
+        if (Convert) {
+          d0 = (float)((int)(t & 0xF) - 8) * f.x + (float)((int)((t >> 4) & 0xF) - 8) * f.y +
+               (float)((int)((t >> 8) & 0xF) - 8) * f.z + (float)((int)((t >> 12) & 0xF) - 8) * f.w;
+          d1 = (float)((int)((t >> 16) & 0xF) - 8) * f.x + (float)((int)((t >> 20) & 0xF) - 8) * f.y +
+               (float)((int)((t >> 24) & 0xF) - 8) * f.z + (float)((int)(t >> 28) - 8) * f.w;
+        } else {
+          // 16 is folded into the scale below; corr / 16 = -1.5 * sum x
+          d0 = fmaf(nib2float<3>(t), f.w, fmaf(nib2float<2>(t), f.z, fmaf(nib2float<1>(t), f.y, nib2float<0>(t) * f.x)));
+          d1 = fmaf(nib2float<7>(t), f.w, fmaf(nib2float<6>(t), f.z, fmaf(nib2float<5>(t), f.y, nib2float<4>(t) * f.x)));
+          d0 = fmaf(d0, 16.0f, corr);
+          d1 = fmaf(d1, 16.0f, corr);
+        }
+        acc[2 * k] = fmaf(half2float(s4[k] & 0xFFFF), d0, acc[2 * k]);
+        acc[2 * k + 1] = fmaf(half2float(s4[k] >> 16), d1, acc[2 * k + 1]);
+      }
+    }
+  }
+  float sum = reduce_batch<8>(acc, lane);  // full sum of row lane % 8
+  if (pieces == 1) {
+    if (lane < 8 && o * 8 + lane < rows) y[o * 8 + lane] = sum;
+    return;
+  }
+  if (lane < 8) part[piece * 8 + lane] = sum;
+  __syncthreads();
+  if (piece == 0 && lane < 8 && o * 8 + lane < rows) {
+    float t = 0;
+    for (int p = 0; p < pieces; p++) t += part[p * 8 + lane];
+    y[o * 8 + lane] = t;
+  }
+}
+
 // ---------------------------------------------------------------- launchers
 constexpr int kBlock = 256;
 
@@ -466,6 +536,23 @@ void run_loop(const GpuMat& m, const float* x, float* y, float*, cudaStream_t st
   }
   k_loop<B, H, Convert><<<ceil_div(m.rows, H), m.tile_cols * 32, (size_t)m.tile_cols * H * 4, st>>>(
       (const uint4*)m.tw, m.tscale, x, y, m.tile_cols, m.rows, m.cols);
+}
+
+template <int Prefetch, int Piece, bool Convert = false>
+void run_octet(const GpuMat& m, const float* x, float* y, float*, cudaStream_t st) {
+  static const int max_threads = [] {
+    cudaFuncAttributes a;
+    CUDA_CHECK(cudaFuncGetAttributes(&a, k_octet<Prefetch, Piece, Convert>));
+    return a.maxThreadsPerBlock;
+  }();
+  int pieces = ceil_div(m.chunks, Piece);
+  if (pieces * 32 > max_threads) {  // very wide matrix: one warp walks the whole row
+    k_octet<Prefetch, 1 << 20, Convert><<<m.octets, 32, 0, st>>>((const uint4*)m.ow, (const uint4*)m.oscale,
+                                                                (const float4*)x, y, m.chunks, m.rows, m.cols);
+    return;
+  }
+  k_octet<Prefetch, Piece, Convert><<<m.octets, pieces * 32, (size_t)pieces * 32, st>>>(
+      (const uint4*)m.ow, (const uint4*)m.oscale, (const float4*)x, y, m.chunks, m.rows, m.cols);
 }
 
 // ------------------------------------------------------------------- probes
@@ -538,49 +625,67 @@ double launch_fma(cudaStream_t st, float* sink) {
 
 const std::vector<Variant>& variants() {
   static const std::vector<Variant> v = {
-      {"s0_naive", false, run_naive, "one thread per row, byte loads, int->float"},
-      {"s1_coalesced", false, run_coalesced, "one warp per row, contiguous byte loads"},
-      {"s2_vec16", false, run_vec16, "16-byte loads, one group per lane"},
-      {"s3_mantissa", false, run_mantissa, "nibble in mantissa + group x-sum correction"},
-      {"s4_xregs", false, run_xregs, "x in registers, shuffle reduction per row"},
-      {"s5_tiled", true, run_tiled, "tiled layout, vector scales, reduce-scatter"},
-      {"s6_block", true, run_block<2, 2>, "block-level reduction, prefetch 2, 64 rows/block"},
-      {"s7_loop", true, run_loop<8, 16>, "short hot loop: 8 rows per iteration, 16 rows per block"},
+      {"s0_naive", kRowMajor, run_naive, "one thread per row, byte loads, int->float"},
+      {"s1_coalesced", kRowMajor, run_coalesced, "one warp per row, contiguous byte loads"},
+      {"s2_vec16", kRowMajor, run_vec16, "16-byte loads, one group per lane"},
+      {"s3_mantissa", kRowMajor, run_mantissa, "nibble in mantissa + group x-sum correction"},
+      {"s4_xregs", kRowMajor, run_xregs, "x in registers, shuffle reduction per row"},
+      {"s5_tiled", kTiled, run_tiled, "tiled layout, vector scales, reduce-scatter"},
+      {"s6_block", kTiled, run_block<2, 2>, "block-level reduction, prefetch 2, 64 rows/block"},
+      {"s7_loop", kTiled, run_loop<8, 16>, "short hot loop: 8 rows per iteration, 16 rows per block"},
+      {"s8_octet", kOctet, run_octet<2, 8>, "8 rows x 4 columns per 16-byte load; contiguous weights and x"},
       // ablations, each differs from a step above in one way
-      {"a3_xcontig", false, run_xcontig, "s3 with x pre-transposed so warp loads are contiguous"},
-      {"a7_convert", true, run_loop<8, 16, true>, "s7 with int->float conversion instead of mantissa"},
+      {"a3_xcontig", kRowMajor, run_xcontig, "s3 with x pre-transposed so warp loads are contiguous"},
+      {"a7_convert", kTiled, run_loop<8, 16, true>, "s7 with int->float conversion instead of mantissa"},
+      {"a8_convert", kOctet, run_octet<2, 8, true>, "s8 with int->float conversion instead of mantissa"},
       // tuning grid: pN = rows of weights in flight per warp, rM = row tiles per block
-      {"t_p1_r1", true, run_block<1, 1>, ""},
-      {"t_p1_r2", true, run_block<1, 2>, ""},
-      {"t_p1_r4", true, run_block<1, 4>, ""},
-      {"t_p2_r1", true, run_block<2, 1>, ""},
-      {"t_p2_r2", true, run_block<2, 2>, ""},
-      {"t_p2_r4", true, run_block<2, 4>, ""},
-      {"t_p4_r1", true, run_block<4, 1>, ""},
-      {"t_p4_r2", true, run_block<4, 2>, ""},
-      {"t_p4_r4", true, run_block<4, 4>, ""},
-      {"t_p8_r1", true, run_block<8, 1>, ""},
-      {"t_p8_r2", true, run_block<8, 2>, ""},
-      {"t_loop_b1_h8", true, run_loop<1, 8>, ""},
-      {"t_loop_b1_h16", true, run_loop<1, 16>, ""},
-      {"t_loop_b1_h32", true, run_loop<1, 32>, ""},
-      {"t_loop_b1_h64", true, run_loop<1, 64>, ""},
-      {"t_loop_b1_h128", true, run_loop<1, 128>, ""},
-      {"t_loop_b2_h8", true, run_loop<2, 8>, ""},
-      {"t_loop_b2_h16", true, run_loop<2, 16>, ""},
-      {"t_loop_b2_h32", true, run_loop<2, 32>, ""},
-      {"t_loop_b2_h64", true, run_loop<2, 64>, ""},
-      {"t_loop_b2_h128", true, run_loop<2, 128>, ""},
-      {"t_loop_b4_h8", true, run_loop<4, 8>, ""},
-      {"t_loop_b4_h16", true, run_loop<4, 16>, ""},
-      {"t_loop_b4_h32", true, run_loop<4, 32>, ""},
-      {"t_loop_b4_h64", true, run_loop<4, 64>, ""},
-      {"t_loop_b4_h128", true, run_loop<4, 128>, ""},
-      {"t_loop_b8_h8", true, run_loop<8, 8>, ""},
-      {"t_loop_b8_h16", true, run_loop<8, 16>, ""},
-      {"t_loop_b8_h32", true, run_loop<8, 32>, ""},
-      {"t_loop_b8_h64", true, run_loop<8, 64>, ""},
-      {"t_loop_b8_h128", true, run_loop<8, 128>, ""},
+      {"t_p1_r1", kTiled, run_block<1, 1>, ""},
+      {"t_p1_r2", kTiled, run_block<1, 2>, ""},
+      {"t_p1_r4", kTiled, run_block<1, 4>, ""},
+      {"t_p2_r1", kTiled, run_block<2, 1>, ""},
+      {"t_p2_r2", kTiled, run_block<2, 2>, ""},
+      {"t_p2_r4", kTiled, run_block<2, 4>, ""},
+      {"t_p4_r1", kTiled, run_block<4, 1>, ""},
+      {"t_p4_r2", kTiled, run_block<4, 2>, ""},
+      {"t_p4_r4", kTiled, run_block<4, 4>, ""},
+      {"t_p8_r1", kTiled, run_block<8, 1>, ""},
+      {"t_p8_r2", kTiled, run_block<8, 2>, ""},
+      {"t_loop_b1_h8", kTiled, run_loop<1, 8>, ""},
+      {"t_loop_b1_h16", kTiled, run_loop<1, 16>, ""},
+      {"t_loop_b1_h32", kTiled, run_loop<1, 32>, ""},
+      {"t_loop_b1_h64", kTiled, run_loop<1, 64>, ""},
+      {"t_loop_b1_h128", kTiled, run_loop<1, 128>, ""},
+      {"t_loop_b2_h8", kTiled, run_loop<2, 8>, ""},
+      {"t_loop_b2_h16", kTiled, run_loop<2, 16>, ""},
+      {"t_loop_b2_h32", kTiled, run_loop<2, 32>, ""},
+      {"t_loop_b2_h64", kTiled, run_loop<2, 64>, ""},
+      {"t_loop_b2_h128", kTiled, run_loop<2, 128>, ""},
+      {"t_loop_b4_h8", kTiled, run_loop<4, 8>, ""},
+      {"t_loop_b4_h16", kTiled, run_loop<4, 16>, ""},
+      {"t_loop_b4_h32", kTiled, run_loop<4, 32>, ""},
+      {"t_loop_b4_h64", kTiled, run_loop<4, 64>, ""},
+      {"t_loop_b4_h128", kTiled, run_loop<4, 128>, ""},
+      {"t_loop_b8_h8", kTiled, run_loop<8, 8>, ""},
+      {"t_loop_b8_h16", kTiled, run_loop<8, 16>, ""},
+      {"t_loop_b8_h32", kTiled, run_loop<8, 32>, ""},
+      {"t_loop_b8_h64", kTiled, run_loop<8, 64>, ""},
+      {"t_loop_b8_h128", kTiled, run_loop<8, 128>, ""},
+      {"t_oct_p1_c8", kOctet, run_octet<1, 8>, ""},
+      {"t_oct_p1_c16", kOctet, run_octet<1, 16>, ""},
+      {"t_oct_p1_c32", kOctet, run_octet<1, 32>, ""},
+      {"t_oct_p1_c64", kOctet, run_octet<1, 64>, ""},
+      {"t_oct_p2_c8", kOctet, run_octet<2, 8>, ""},
+      {"t_oct_p2_c16", kOctet, run_octet<2, 16>, ""},
+      {"t_oct_p2_c32", kOctet, run_octet<2, 32>, ""},
+      {"t_oct_p2_c64", kOctet, run_octet<2, 64>, ""},
+      {"t_oct_p4_c8", kOctet, run_octet<4, 8>, ""},
+      {"t_oct_p4_c16", kOctet, run_octet<4, 16>, ""},
+      {"t_oct_p4_c32", kOctet, run_octet<4, 32>, ""},
+      {"t_oct_p4_c64", kOctet, run_octet<4, 64>, ""},
+      {"t_oct_p8_c8", kOctet, run_octet<8, 8>, ""},
+      {"t_oct_p8_c16", kOctet, run_octet<8, 16>, ""},
+      {"t_oct_p8_c32", kOctet, run_octet<8, 32>, ""},
+      {"t_oct_p8_c64", kOctet, run_octet<8, 64>, ""},
   };
   return v;
 }

@@ -38,6 +38,9 @@ static void run_case(const char* label, const Matrix& m, const std::vector<float
   g.rows = m.rows, g.cols = m.cols, g.tile_rows = t.tile_rows, g.tile_cols = t.tile_cols;
   g.w = d.up(m.w.data(), m.w.size()), g.scale = d.up(m.scale.data(), m.scale.size());
   g.tw = d.up(t.w.data(), t.w.size()), g.tscale = d.up(t.scale.data(), t.scale.size());
+  Octet o = to_octet(m);
+  g.octets = o.octets, g.chunks = o.chunks;
+  g.ow = d.up(o.w.data(), o.w.size()), g.oscale = d.up(o.scale.data(), o.scale.size());
   const float* dx = d.up(x.data(), x.size());
   // 32 guard values after y's padded end catch out-of-range writes.
   int ypad = (m.rows + 31) / 32 * 32;

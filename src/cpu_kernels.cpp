@@ -123,6 +123,21 @@ void run_avx2_int8(const Matrix& m, const float* x, float* y) {
 
 }  // namespace
 
+void cpu_gemv_fp32(const float* a, int rows, int cols, const float* x, float* y) {
+#pragma omp parallel for schedule(static)
+  for (int r = 0; r < rows; r++) {
+    const float* p = a + (size_t)r * cols;
+    __m256 s0 = _mm256_setzero_ps(), s1 = s0, s2 = s0, s3 = s0;
+    for (int c = 0; c < cols; c += 32) {  // cols is a multiple of 32
+      s0 = _mm256_fmadd_ps(_mm256_loadu_ps(p + c), _mm256_loadu_ps(x + c), s0);
+      s1 = _mm256_fmadd_ps(_mm256_loadu_ps(p + c + 8), _mm256_loadu_ps(x + c + 8), s1);
+      s2 = _mm256_fmadd_ps(_mm256_loadu_ps(p + c + 16), _mm256_loadu_ps(x + c + 16), s2);
+      s3 = _mm256_fmadd_ps(_mm256_loadu_ps(p + c + 24), _mm256_loadu_ps(x + c + 24), s3);
+    }
+    y[r] = hsum(_mm256_add_ps(_mm256_add_ps(s0, s1), _mm256_add_ps(s2, s3)));
+  }
+}
+
 double cpu_read(const float* p, size_t n) {
   double total = 0;
 #pragma omp parallel reduction(+ : total)

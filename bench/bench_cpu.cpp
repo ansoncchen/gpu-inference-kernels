@@ -1,6 +1,8 @@
 // CPU benchmark: same K-copies method as bench_gpu (at least 512 MB of matrix
 // data per pass, so nothing comes from the 32 MB L3).
-// Usage: bench_cpu out.jsonl [threads,threads,...]
+// Usage: bench_cpu out.jsonl threads,threads,... q4|blas
+// OpenBLAS is a separate mode: its pthreads would inherit the one-core affinity
+// that OMP_PROC_BIND gives the main thread, which makes it look ~50x too slow.
 #include <cblas.h>
 #include <omp.h>
 
@@ -49,6 +51,7 @@ int main(int argc, char** argv) {
   std::vector<int> threads;
   std::stringstream ss(argc > 2 ? argv[2] : "1,16,32");
   for (std::string t; std::getline(ss, t, ',');) threads.push_back(atoi(t.c_str()));
+  const bool blas = argc > 3 && !strcmp(argv[3], "blas");
   double load0 = loadavg();
   auto emit = [&](const std::string& name, int th, int R, int C, size_t bytes, int K, const std::vector<double>& us, double err) {
     double med = quantile(us, 0.5);
@@ -61,7 +64,7 @@ int main(int argc, char** argv) {
     fflush(stdout);
   };
 
-  {
+  if (!blas) {
     const size_t n = size_t(1) << 28;  // 1 GB of floats
     std::unique_ptr<float[]> buf(new float[n]);
 #pragma omp parallel for schedule(static)
@@ -95,9 +98,10 @@ int main(int argc, char** argv) {
       return w;
     };
     int K = (int)std::ceil(512.0 * 1048576.0 / m.bytes());
-    std::vector<Matrix> ms(K, m);
+    std::vector<Matrix> ms(blas ? 0 : K, m);
     for (const auto& v : cpu_variants())
       for (int th : threads) {
+        if (blas) continue;
         if (v.name == "c0_scalar" && th == 1) continue;  // minutes per point, not needed
         omp_set_num_threads(th);
         auto us = measure(K, [&] { for (auto& a : ms) v.run(a, x.data(), y.data()); });
@@ -110,6 +114,12 @@ int main(int argc, char** argv) {
     std::unique_ptr<float[]> fw(new float[n * KF]);
     for (int k = 0; k < KF; k++) memcpy(&fw[n * k], d.data(), n * 4);
     for (int th : threads) {
+      if (!blas) {
+        omp_set_num_threads(th);
+        auto us = measure(KF, [&] { for (int k = 0; k < KF; k++) cpu_gemv_fp32(&fw[n * k], R, C, x.data(), y.data()); });
+        emit("fp32_avx2", th, R, C, n * 4, KF, us, err());
+        continue;
+      }
       openblas_set_num_threads(th);
       auto us = measure(KF, [&] {
         for (int k = 0; k < KF; k++)

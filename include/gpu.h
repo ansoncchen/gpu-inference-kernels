@@ -26,11 +26,16 @@ struct GpuMat {
   const uint16_t* scale = nullptr;  // row-major FP16 scales
   const uint8_t* tw = nullptr;      // tiled nibbles
   const uint16_t* tscale = nullptr;
+  int octets = 0, chunks = 0;
+  const uint8_t* ow = nullptr;       // octet layout
+  const uint16_t* oscale = nullptr;
 };
+
+enum Layout { kRowMajor = 0, kTiled = 1, kOctet = 2 };
 
 struct Variant {
   std::string name;
-  bool tiled;
+  Layout layout;
   // Device buffer sizes in floats: y round_up(rows, 32), x cols, scratch
   // 2 * cols + 2048.
   void (*launch)(const GpuMat&, const float* x, float* y, float* scratch, cudaStream_t);

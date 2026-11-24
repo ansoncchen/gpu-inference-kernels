@@ -116,6 +116,27 @@ Tiled to_tiled(const Matrix& m) {
   return t;
 }
 
+Octet to_octet(const Matrix& m) {
+  Octet t;
+  t.rows = m.rows, t.cols = m.cols;
+  t.octets = (m.rows + 7) / 8;
+  t.chunks = (m.cols + 127) / 128;
+  t.w.assign((size_t)t.octets * t.chunks * 512, 0x88);
+  t.scale.assign((size_t)t.octets * t.chunks * 4 * 8, 0);
+#pragma omp parallel for schedule(static)
+  for (int o = 0; o < t.octets; o++)
+    for (int f = 0; f < 8; f++) {
+      int r = o * 8 + f;
+      if (r >= m.rows) break;
+      const uint8_t* src = &m.w[(size_t)r * (m.cols / 2)];
+      for (int c4 = 0; c4 < m.cols / 4; c4++)  // two bytes = 4 columns
+        std::memcpy(&t.w[(((size_t)o * t.chunks * 32) + c4) * 16 + f * 2], src + c4 * 2, 2);
+      for (int g = 0; g < m.groups(); g++)
+        t.scale[((size_t)o * t.chunks * 4 + g) * 8 + f] = m.scale[(size_t)r * m.groups() + g];
+    }
+  return t;
+}
+
 void gemv_reference(const Matrix& m, const float* x, double* y, double* bound) {
 #pragma omp parallel for schedule(static)
   for (int r = 0; r < m.rows; r++) {

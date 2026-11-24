@@ -201,14 +201,17 @@ int main(int argc, char** argv) {
     std::vector<float> y(R);
     auto copies_for = [&](size_t b) { return std::max<int>(1, (int)std::ceil(o.footprint_mb * 1048576.0 / b)); };
 
-    for (int tiled = 0; tiled < 2; tiled++) {
+    for (int layout = 0; layout < 3; layout++) {
       bool any = false;
-      for (const Variant& v : variants()) any |= v.tiled == (bool)tiled && want(v.name);
+      for (const Variant& v : variants()) any |= v.layout == layout && want(v.name);
+      any |= layout == kRowMajor && want("readbound");
       if (!any) continue;
       Tiled t;
-      if (tiled) t = to_tiled(m);
-      const std::vector<uint8_t>& hw = tiled ? t.w : m.w;
-      const std::vector<uint16_t>& hs = tiled ? t.scale : m.scale;
+      Octet oc;
+      if (layout == kTiled) t = to_tiled(m);
+      if (layout == kOctet) oc = to_octet(m);
+      const std::vector<uint8_t>& hw = layout == kTiled ? t.w : layout == kOctet ? oc.w : m.w;
+      const std::vector<uint16_t>& hs = layout == kTiled ? t.scale : layout == kOctet ? oc.scale : m.scale;
       size_t bytes = hw.size() + hs.size() * 2;
       int K = copies_for(bytes);
       size_t wstep = (hw.size() + 255) / 256 * 256, sstep = (hs.size() * 2 + 255) / 256 * 256;
@@ -219,18 +222,19 @@ int main(int argc, char** argv) {
         upload(dw + wstep * i, hw.data(), hw.size());
         upload((uint16_t*)(ds + sstep * i), hs.data(), hs.size());
         g[i].rows = R, g[i].cols = C, g[i].tile_rows = (R + 31) / 32, g[i].tile_cols = (C + 1023) / 1024;
-        (tiled ? g[i].tw : g[i].w) = dw + wstep * i;
-        (tiled ? g[i].tscale : g[i].scale) = (uint16_t*)(ds + sstep * i);
+        g[i].octets = (R + 7) / 8, g[i].chunks = (C + 127) / 128;
+        (layout == kTiled ? g[i].tw : layout == kOctet ? g[i].ow : g[i].w) = dw + wstep * i;
+        (layout == kTiled ? g[i].tscale : layout == kOctet ? g[i].oscale : g[i].scale) = (uint16_t*)(ds + sstep * i);
       }
       // Same bytes, same number of launches, but only reads: the best any kernel
       // could do at this matrix size on this machine, launch gaps included.
-      if (tiled && want("readbound")) {
+      if (layout == kRowMajor && want("readbound")) {
         Timing tm = measure(o, K, [&] { for (int i = 0; i < K; i++) launch_read(dw + wstep * i, hw.size(), 16, sink, g_stream); },
                             [&] { launch_read(dw, hw.size(), 16, sink, g_stream); });
         emit(o, "readbound", R, C, hw.size() / 32768 * 32768, K, tm, 0);
       }
       for (const Variant& v : variants()) {
-        if (v.tiled != (bool)tiled || !want(v.name)) continue;
+        if (v.layout != layout || !want(v.name)) continue;
         Timing tm = measure(o, K, [&] { for (auto& a : g) v.launch(a, dx, dy, scratch, g_stream); },
                             [&] { v.launch(g[0], dx, dy, scratch, g_stream); });
         CUDA_CHECK(cudaMemcpy(y.data(), dy, R * 4, cudaMemcpyDeviceToHost));

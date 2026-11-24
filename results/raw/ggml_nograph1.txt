@@ -1,0 +1,6 @@
+ggml_q4_0   1536x8960       17.98 us    430.6 GB/s  err 1.9e-04
+ggml_q4_0   8960x1536       18.06 us    428.7 GB/s  err 4.9e-04
+ggml_q4_0   4096x4096       20.92 us    451.1 GB/s  err 2.8e-04
+ggml_q4_0  11008x4096       48.61 us    521.8 GB/s  err 3.1e-04
+ggml_q4_0   8192x8192       69.72 us    541.4 GB/s  err 2.5e-04
+ggml_q4_0  32768x8192      264.52 us    570.8 GB/s  err 2.5e-04

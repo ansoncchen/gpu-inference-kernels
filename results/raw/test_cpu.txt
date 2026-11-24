@@ -1,0 +1,40 @@
+ok   random                  1x32     c0_scalar      err 2.12e-09
+ok   random                  1x32     c1_avx2        err 2.52e-08
+ok   random                  1x32     c2_avx2_int8x  err 1.99e-04
+ok   random                 33x1024   c0_scalar      err 1.06e-08
+ok   random                 33x1024   c1_avx2        err 1.79e-08
+ok   random                 33x1024   c2_avx2_int8x  err 4.03e-04
+ok   random                100x896    c0_scalar      err 1.49e-08
+ok   random                100x896    c1_avx2        err 3.32e-08
+ok   random                100x896    c2_avx2_int8x  err 4.22e-04
+ok   random                257x1056   c0_scalar      err 1.69e-08
+ok   random                257x1056   c1_avx2        err 3.31e-08
+ok   random                257x1056   c2_avx2_int8x  err 4.33e-04
+ok   random               1000x2080   c0_scalar      err 1.72e-08
+ok   random               1000x2080   c1_avx2        err 3.31e-08
+ok   random               1000x2080   c2_avx2_int8x  err 3.58e-04
+ok   random               4096x4096   c0_scalar      err 1.98e-08
+ok   random               4096x4096   c1_avx2        err 3.96e-08
+ok   random               4096x4096   c2_avx2_int8x  err 2.66e-04
+ok   random                  3x32768  c0_scalar      err 4.35e-09
+ok   random                  3x32768  c1_avx2        err 3.65e-09
+ok   random                  3x32768  c2_avx2_int8x  err 1.71e-05
+ok   random               8192x8192   c0_scalar      err 2.36e-08
+ok   random               8192x8192   c1_avx2        err 3.94e-08
+ok   random               8192x8192   c2_avx2_int8x  err 2.07e-04
+ok   all -8                129x2048   c0_scalar      err 1.93e-08
+ok   all -8                129x2048   c1_avx2        err 1.93e-08
+ok   all -8                129x2048   c2_avx2_int8x  err 4.25e-04
+ok   all 7                 129x2048   c0_scalar      err 1.36e-08
+ok   all 7                 129x2048   c1_avx2        err 3.45e-08
+ok   all 7                 129x2048   c2_avx2_int8x  err 4.53e-04
+ok   quantized              64x256    c0_scalar      err 9.48e-09
+ok   quantized              64x256    c1_avx2        err 4.60e-08
+ok   quantized              64x256    c2_avx2_int8x  err 4.27e-04
+ok   x = 0                  64x256    c0_scalar      err 0.00e+00
+ok   x = 0                  64x256    c1_avx2        err 0.00e+00
+ok   x = 0                  64x256    c2_avx2_int8x  err 0.00e+00
+ok   x large positive       64x256    c0_scalar      err 1.39e-08
+ok   x large positive       64x256    c1_avx2        err 8.93e-08
+ok   x large positive       64x256    c2_avx2_int8x  err 3.42e-04
+44 checks, 0 failures

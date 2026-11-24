@@ -1,0 +1,9 @@
+openblas_fp32    t=8     4096x4096       1377.9 us [p5 1353.2 p95 1460.1]   48.7 GB/s err 2.7e-08
+openblas_fp32    t=16    4096x4096       1486.3 us [p5 1417.3 p95 1513.9]   45.2 GB/s err 2.7e-08
+openblas_fp32    t=32    4096x4096       1493.8 us [p5 1454.7 p95 5968.4]   44.9 GB/s err 2.7e-08
+openblas_fp32    t=8    11008x4096       3679.8 us [p5 3617.4 p95 4021.5]   49.0 GB/s err 2.7e-08
+openblas_fp32    t=16   11008x4096       3953.9 us [p5 3782.1 p95 4343.5]   45.6 GB/s err 2.7e-08
+openblas_fp32    t=32   11008x4096       3903.4 us [p5 3890.8 p95 7828.8]   46.2 GB/s err 2.7e-08
+openblas_fp32    t=8     8192x8192       7318.0 us [p5 5900.8 p95 7655.0]   36.7 GB/s err 1.6e-08
+openblas_fp32    t=16    8192x8192       6524.5 us [p5 6379.3 p95 6755.4]   41.1 GB/s err 1.6e-08
+openblas_fp32    t=32    8192x8192       8030.9 us [p5 6620.0 p95 11870.3]   33.4 GB/s err 1.6e-08

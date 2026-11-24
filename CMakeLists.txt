@@ -45,3 +45,6 @@ if(LLAMA_DIR)
   target_link_directories(bench_ggml PRIVATE ${LLAMA_DIR}/build/bin)
   target_link_libraries(bench_ggml q4 ggml ggml-base ggml-cuda ${CMAKE_DL_LIBS} pthread)
 endif()
+
+add_executable(decode decode/decode.cu)
+target_link_libraries(decode q4gpu CUDA::cudart_static CUDA::cublas)

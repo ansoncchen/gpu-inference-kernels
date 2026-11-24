@@ -1,0 +1,1122 @@
+ok   random                          1x32     s0_naive     err 2.47e-09
+ok   random                          1x32     s1_coalesced err 2.47e-09
+ok   random                          1x32     s2_vec16     err 2.47e-09
+ok   random                          1x32     s3_mantissa  err 3.43e-08
+ok   random                          1x32     s4_xregs     err 2.08e-08
+ok   random                          1x32     s5_tiled     err 2.08e-08
+ok   random                          1x32     s6_block     err 2.08e-08
+ok   random                          1x32     s7_loop      err 2.08e-08
+ok   random                          1x32     s8_octet     err 5.76e-08
+ok   random                          1x32     a3_xcontig   err 2.08e-08
+ok   random                          1x32     a7_convert   err 2.47e-09
+ok   random                          1x32     a8_convert   err 1.59e-08
+ok   random                          1x32     t_p1_r1      err 2.08e-08
+ok   random                          1x32     t_p1_r2      err 2.08e-08
+ok   random                          1x32     t_p1_r4      err 2.08e-08
+ok   random                          1x32     t_p2_r1      err 2.08e-08
+ok   random                          1x32     t_p2_r2      err 2.08e-08
+ok   random                          1x32     t_p2_r4      err 2.08e-08
+ok   random                          1x32     t_p4_r1      err 2.08e-08
+ok   random                          1x32     t_p4_r2      err 2.08e-08
+ok   random                          1x32     t_p4_r4      err 2.08e-08
+ok   random                          1x32     t_p8_r1      err 2.08e-08
+ok   random                          1x32     t_p8_r2      err 2.08e-08
+ok   random                          1x32     t_loop_b1_h8 err 2.08e-08
+ok   random                          1x32     t_loop_b1_h16 err 2.08e-08
+ok   random                          1x32     t_loop_b1_h32 err 2.08e-08
+ok   random                          1x32     t_loop_b1_h64 err 2.08e-08
+ok   random                          1x32     t_loop_b1_h128 err 2.08e-08
+ok   random                          1x32     t_loop_b2_h8 err 2.08e-08
+ok   random                          1x32     t_loop_b2_h16 err 2.08e-08
+ok   random                          1x32     t_loop_b2_h32 err 2.08e-08
+ok   random                          1x32     t_loop_b2_h64 err 2.08e-08
+ok   random                          1x32     t_loop_b2_h128 err 2.08e-08
+ok   random                          1x32     t_loop_b4_h8 err 2.08e-08
+ok   random                          1x32     t_loop_b4_h16 err 2.08e-08
+ok   random                          1x32     t_loop_b4_h32 err 2.08e-08
+ok   random                          1x32     t_loop_b4_h64 err 2.08e-08
+ok   random                          1x32     t_loop_b4_h128 err 2.08e-08
+ok   random                          1x32     t_loop_b8_h8 err 2.08e-08
+ok   random                          1x32     t_loop_b8_h16 err 2.08e-08
+ok   random                          1x32     t_loop_b8_h32 err 2.08e-08
+ok   random                          1x32     t_loop_b8_h64 err 2.08e-08
+ok   random                          1x32     t_loop_b8_h128 err 2.08e-08
+ok   random                          1x32     t_oct_p1_c8  err 5.76e-08
+ok   random                          1x32     t_oct_p1_c16 err 5.76e-08
+ok   random                          1x32     t_oct_p1_c32 err 5.76e-08
+ok   random                          1x32     t_oct_p1_c64 err 5.76e-08
+ok   random                          1x32     t_oct_p2_c8  err 5.76e-08
+ok   random                          1x32     t_oct_p2_c16 err 5.76e-08
+ok   random                          1x32     t_oct_p2_c32 err 5.76e-08
+ok   random                          1x32     t_oct_p2_c64 err 5.76e-08
+ok   random                          1x32     t_oct_p4_c8  err 5.76e-08
+ok   random                          1x32     t_oct_p4_c16 err 5.76e-08
+ok   random                          1x32     t_oct_p4_c32 err 5.76e-08
+ok   random                          1x32     t_oct_p4_c64 err 5.76e-08
+ok   random                          1x32     t_oct_p8_c8  err 5.76e-08
+ok   random                          1x32     t_oct_p8_c16 err 5.76e-08
+ok   random                          1x32     t_oct_p8_c32 err 5.76e-08
+ok   random                          1x32     t_oct_p8_c64 err 5.76e-08
+ok   random                         31x64     s0_naive     err 4.06e-08
+ok   random                         31x64     s1_coalesced err 4.22e-08
+ok   random                         31x64     s2_vec16     err 4.06e-08
+ok   random                         31x64     s3_mantissa  err 1.28e-07
+ok   random                         31x64     s4_xregs     err 1.05e-07
+ok   random                         31x64     s5_tiled     err 1.05e-07
+ok   random                         31x64     s6_block     err 1.05e-07
+ok   random                         31x64     s7_loop      err 1.05e-07
+ok   random                         31x64     s8_octet     err 5.23e-08
+ok   random                         31x64     a3_xcontig   err 1.05e-07
+ok   random                         31x64     a7_convert   err 4.06e-08
+ok   random                         31x64     a8_convert   err 2.11e-08
+ok   random                         31x64     t_p1_r1      err 1.05e-07
+ok   random                         31x64     t_p1_r2      err 1.05e-07
+ok   random                         31x64     t_p1_r4      err 1.05e-07
+ok   random                         31x64     t_p2_r1      err 1.05e-07
+ok   random                         31x64     t_p2_r2      err 1.05e-07
+ok   random                         31x64     t_p2_r4      err 1.05e-07
+ok   random                         31x64     t_p4_r1      err 1.05e-07
+ok   random                         31x64     t_p4_r2      err 1.05e-07
+ok   random                         31x64     t_p4_r4      err 1.05e-07
+ok   random                         31x64     t_p8_r1      err 1.05e-07
+ok   random                         31x64     t_p8_r2      err 1.05e-07
+ok   random                         31x64     t_loop_b1_h8 err 1.05e-07
+ok   random                         31x64     t_loop_b1_h16 err 1.05e-07
+ok   random                         31x64     t_loop_b1_h32 err 1.05e-07
+ok   random                         31x64     t_loop_b1_h64 err 1.05e-07
+ok   random                         31x64     t_loop_b1_h128 err 1.05e-07
+ok   random                         31x64     t_loop_b2_h8 err 1.05e-07
+ok   random                         31x64     t_loop_b2_h16 err 1.05e-07
+ok   random                         31x64     t_loop_b2_h32 err 1.05e-07
+ok   random                         31x64     t_loop_b2_h64 err 1.05e-07
+ok   random                         31x64     t_loop_b2_h128 err 1.05e-07
+ok   random                         31x64     t_loop_b4_h8 err 1.05e-07
+ok   random                         31x64     t_loop_b4_h16 err 1.05e-07
+ok   random                         31x64     t_loop_b4_h32 err 1.05e-07
+ok   random                         31x64     t_loop_b4_h64 err 1.05e-07
+ok   random                         31x64     t_loop_b4_h128 err 1.05e-07
+ok   random                         31x64     t_loop_b8_h8 err 1.05e-07
+ok   random                         31x64     t_loop_b8_h16 err 1.05e-07
+ok   random                         31x64     t_loop_b8_h32 err 1.05e-07
+ok   random                         31x64     t_loop_b8_h64 err 1.05e-07
+ok   random                         31x64     t_loop_b8_h128 err 1.05e-07
+ok   random                         31x64     t_oct_p1_c8  err 5.23e-08
+ok   random                         31x64     t_oct_p1_c16 err 5.23e-08
+ok   random                         31x64     t_oct_p1_c32 err 5.23e-08
+ok   random                         31x64     t_oct_p1_c64 err 5.23e-08
+ok   random                         31x64     t_oct_p2_c8  err 5.23e-08
+ok   random                         31x64     t_oct_p2_c16 err 5.23e-08
+ok   random                         31x64     t_oct_p2_c32 err 5.23e-08
+ok   random                         31x64     t_oct_p2_c64 err 5.23e-08
+ok   random                         31x64     t_oct_p4_c8  err 5.23e-08
+ok   random                         31x64     t_oct_p4_c16 err 5.23e-08
+ok   random                         31x64     t_oct_p4_c32 err 5.23e-08
+ok   random                         31x64     t_oct_p4_c64 err 5.23e-08
+ok   random                         31x64     t_oct_p8_c8  err 5.23e-08
+ok   random                         31x64     t_oct_p8_c16 err 5.23e-08
+ok   random                         31x64     t_oct_p8_c32 err 5.23e-08
+ok   random                         31x64     t_oct_p8_c64 err 5.23e-08
+ok   random                         33x1024   s0_naive     err 5.18e-08
+ok   random                         33x1024   s1_coalesced err 1.12e-08
+ok   random                         33x1024   s2_vec16     err 1.50e-08
+ok   random                         33x1024   s3_mantissa  err 6.18e-08
+ok   random                         33x1024   s4_xregs     err 4.11e-08
+ok   random                         33x1024   s5_tiled     err 4.11e-08
+ok   random                         33x1024   s6_block     err 4.11e-08
+ok   random                         33x1024   s7_loop      err 4.11e-08
+ok   random                         33x1024   s8_octet     err 1.58e-08
+ok   random                         33x1024   a3_xcontig   err 5.67e-08
+ok   random                         33x1024   a7_convert   err 8.31e-09
+ok   random                         33x1024   a8_convert   err 5.44e-09
+ok   random                         33x1024   t_p1_r1      err 4.11e-08
+ok   random                         33x1024   t_p1_r2      err 4.11e-08
+ok   random                         33x1024   t_p1_r4      err 4.11e-08
+ok   random                         33x1024   t_p2_r1      err 4.11e-08
+ok   random                         33x1024   t_p2_r2      err 4.11e-08
+ok   random                         33x1024   t_p2_r4      err 4.11e-08
+ok   random                         33x1024   t_p4_r1      err 4.11e-08
+ok   random                         33x1024   t_p4_r2      err 4.11e-08
+ok   random                         33x1024   t_p4_r4      err 4.11e-08
+ok   random                         33x1024   t_p8_r1      err 4.11e-08
+ok   random                         33x1024   t_p8_r2      err 4.11e-08
+ok   random                         33x1024   t_loop_b1_h8 err 4.11e-08
+ok   random                         33x1024   t_loop_b1_h16 err 4.11e-08
+ok   random                         33x1024   t_loop_b1_h32 err 4.11e-08
+ok   random                         33x1024   t_loop_b1_h64 err 4.11e-08
+ok   random                         33x1024   t_loop_b1_h128 err 4.11e-08
+ok   random                         33x1024   t_loop_b2_h8 err 4.11e-08
+ok   random                         33x1024   t_loop_b2_h16 err 4.11e-08
+ok   random                         33x1024   t_loop_b2_h32 err 4.11e-08
+ok   random                         33x1024   t_loop_b2_h64 err 4.11e-08
+ok   random                         33x1024   t_loop_b2_h128 err 4.11e-08
+ok   random                         33x1024   t_loop_b4_h8 err 3.59e-08
+ok   random                         33x1024   t_loop_b4_h16 err 3.59e-08
+ok   random                         33x1024   t_loop_b4_h32 err 3.59e-08
+ok   random                         33x1024   t_loop_b4_h64 err 3.59e-08
+ok   random                         33x1024   t_loop_b4_h128 err 3.59e-08
+ok   random                         33x1024   t_loop_b8_h8 err 4.11e-08
+ok   random                         33x1024   t_loop_b8_h16 err 4.11e-08
+ok   random                         33x1024   t_loop_b8_h32 err 4.11e-08
+ok   random                         33x1024   t_loop_b8_h64 err 4.11e-08
+ok   random                         33x1024   t_loop_b8_h128 err 4.11e-08
+ok   random                         33x1024   t_oct_p1_c8  err 1.58e-08
+ok   random                         33x1024   t_oct_p1_c16 err 1.58e-08
+ok   random                         33x1024   t_oct_p1_c32 err 1.58e-08
+ok   random                         33x1024   t_oct_p1_c64 err 1.58e-08
+ok   random                         33x1024   t_oct_p2_c8  err 1.58e-08
+ok   random                         33x1024   t_oct_p2_c16 err 1.58e-08
+ok   random                         33x1024   t_oct_p2_c32 err 1.58e-08
+ok   random                         33x1024   t_oct_p2_c64 err 1.58e-08
+ok   random                         33x1024   t_oct_p4_c8  err 1.58e-08
+ok   random                         33x1024   t_oct_p4_c16 err 1.58e-08
+ok   random                         33x1024   t_oct_p4_c32 err 1.58e-08
+ok   random                         33x1024   t_oct_p4_c64 err 1.58e-08
+ok   random                         33x1024   t_oct_p8_c8  err 1.58e-08
+ok   random                         33x1024   t_oct_p8_c16 err 1.58e-08
+ok   random                         33x1024   t_oct_p8_c32 err 1.58e-08
+ok   random                         33x1024   t_oct_p8_c64 err 1.58e-08
+ok   random                        100x896    s0_naive     err 4.73e-08
+ok   random                        100x896    s1_coalesced err 1.22e-08
+ok   random                        100x896    s2_vec16     err 1.41e-08
+ok   random                        100x896    s3_mantissa  err 5.37e-08
+ok   random                        100x896    s4_xregs     err 4.83e-08
+ok   random                        100x896    s5_tiled     err 4.83e-08
+ok   random                        100x896    s6_block     err 4.83e-08
+ok   random                        100x896    s7_loop      err 4.77e-08
+ok   random                        100x896    s8_octet     err 2.76e-08
+ok   random                        100x896    a3_xcontig   err 4.71e-08
+ok   random                        100x896    a7_convert   err 1.03e-08
+ok   random                        100x896    a8_convert   err 9.02e-09
+ok   random                        100x896    t_p1_r1      err 4.83e-08
+ok   random                        100x896    t_p1_r2      err 4.83e-08
+ok   random                        100x896    t_p1_r4      err 4.83e-08
+ok   random                        100x896    t_p2_r1      err 4.83e-08
+ok   random                        100x896    t_p2_r2      err 4.83e-08
+ok   random                        100x896    t_p2_r4      err 4.83e-08
+ok   random                        100x896    t_p4_r1      err 4.83e-08
+ok   random                        100x896    t_p4_r2      err 4.83e-08
+ok   random                        100x896    t_p4_r4      err 4.83e-08
+ok   random                        100x896    t_p8_r1      err 4.83e-08
+ok   random                        100x896    t_p8_r2      err 4.83e-08
+ok   random                        100x896    t_loop_b1_h8 err 4.77e-08
+ok   random                        100x896    t_loop_b1_h16 err 4.77e-08
+ok   random                        100x896    t_loop_b1_h32 err 4.77e-08
+ok   random                        100x896    t_loop_b1_h64 err 4.77e-08
+ok   random                        100x896    t_loop_b1_h128 err 4.77e-08
+ok   random                        100x896    t_loop_b2_h8 err 4.77e-08
+ok   random                        100x896    t_loop_b2_h16 err 4.77e-08
+ok   random                        100x896    t_loop_b2_h32 err 4.77e-08
+ok   random                        100x896    t_loop_b2_h64 err 4.77e-08
+ok   random                        100x896    t_loop_b2_h128 err 4.77e-08
+ok   random                        100x896    t_loop_b4_h8 err 4.77e-08
+ok   random                        100x896    t_loop_b4_h16 err 4.77e-08
+ok   random                        100x896    t_loop_b4_h32 err 4.77e-08
+ok   random                        100x896    t_loop_b4_h64 err 4.77e-08
+ok   random                        100x896    t_loop_b4_h128 err 4.77e-08
+ok   random                        100x896    t_loop_b8_h8 err 4.77e-08
+ok   random                        100x896    t_loop_b8_h16 err 4.77e-08
+ok   random                        100x896    t_loop_b8_h32 err 4.77e-08
+ok   random                        100x896    t_loop_b8_h64 err 4.77e-08
+ok   random                        100x896    t_loop_b8_h128 err 4.77e-08
+ok   random                        100x896    t_oct_p1_c8  err 2.76e-08
+ok   random                        100x896    t_oct_p1_c16 err 2.76e-08
+ok   random                        100x896    t_oct_p1_c32 err 2.76e-08
+ok   random                        100x896    t_oct_p1_c64 err 2.76e-08
+ok   random                        100x896    t_oct_p2_c8  err 2.76e-08
+ok   random                        100x896    t_oct_p2_c16 err 2.76e-08
+ok   random                        100x896    t_oct_p2_c32 err 2.76e-08
+ok   random                        100x896    t_oct_p2_c64 err 2.76e-08
+ok   random                        100x896    t_oct_p4_c8  err 2.76e-08
+ok   random                        100x896    t_oct_p4_c16 err 2.76e-08
+ok   random                        100x896    t_oct_p4_c32 err 2.76e-08
+ok   random                        100x896    t_oct_p4_c64 err 2.76e-08
+ok   random                        100x896    t_oct_p8_c8  err 2.76e-08
+ok   random                        100x896    t_oct_p8_c16 err 2.76e-08
+ok   random                        100x896    t_oct_p8_c32 err 2.76e-08
+ok   random                        100x896    t_oct_p8_c64 err 2.76e-08
+ok   random                        257x1056   s0_naive     err 5.12e-08
+ok   random                        257x1056   s1_coalesced err 1.39e-08
+ok   random                        257x1056   s2_vec16     err 1.48e-08
+ok   random                        257x1056   s3_mantissa  err 6.80e-08
+ok   random                        257x1056   s4_xregs     err 4.97e-08
+ok   random                        257x1056   s5_tiled     err 4.97e-08
+ok   random                        257x1056   s6_block     err 4.97e-08
+ok   random                        257x1056   s7_loop      err 5.01e-08
+ok   random                        257x1056   s8_octet     err 2.21e-08
+ok   random                        257x1056   a3_xcontig   err 5.01e-08
+ok   random                        257x1056   a7_convert   err 8.50e-09
+ok   random                        257x1056   a8_convert   err 7.30e-09
+ok   random                        257x1056   t_p1_r1      err 4.97e-08
+ok   random                        257x1056   t_p1_r2      err 4.97e-08
+ok   random                        257x1056   t_p1_r4      err 4.97e-08
+ok   random                        257x1056   t_p2_r1      err 4.97e-08
+ok   random                        257x1056   t_p2_r2      err 4.97e-08
+ok   random                        257x1056   t_p2_r4      err 4.97e-08
+ok   random                        257x1056   t_p4_r1      err 4.97e-08
+ok   random                        257x1056   t_p4_r2      err 4.97e-08
+ok   random                        257x1056   t_p4_r4      err 4.97e-08
+ok   random                        257x1056   t_p8_r1      err 4.97e-08
+ok   random                        257x1056   t_p8_r2      err 4.97e-08
+ok   random                        257x1056   t_loop_b1_h8 err 4.84e-08
+ok   random                        257x1056   t_loop_b1_h16 err 4.84e-08
+ok   random                        257x1056   t_loop_b1_h32 err 4.84e-08
+ok   random                        257x1056   t_loop_b1_h64 err 4.84e-08
+ok   random                        257x1056   t_loop_b1_h128 err 4.84e-08
+ok   random                        257x1056   t_loop_b2_h8 err 4.84e-08
+ok   random                        257x1056   t_loop_b2_h16 err 4.84e-08
+ok   random                        257x1056   t_loop_b2_h32 err 4.84e-08
+ok   random                        257x1056   t_loop_b2_h64 err 4.84e-08
+ok   random                        257x1056   t_loop_b2_h128 err 4.84e-08
+ok   random                        257x1056   t_loop_b4_h8 err 5.07e-08
+ok   random                        257x1056   t_loop_b4_h16 err 5.07e-08
+ok   random                        257x1056   t_loop_b4_h32 err 5.07e-08
+ok   random                        257x1056   t_loop_b4_h64 err 5.07e-08
+ok   random                        257x1056   t_loop_b4_h128 err 5.07e-08
+ok   random                        257x1056   t_loop_b8_h8 err 5.01e-08
+ok   random                        257x1056   t_loop_b8_h16 err 5.01e-08
+ok   random                        257x1056   t_loop_b8_h32 err 5.01e-08
+ok   random                        257x1056   t_loop_b8_h64 err 5.01e-08
+ok   random                        257x1056   t_loop_b8_h128 err 5.01e-08
+ok   random                        257x1056   t_oct_p1_c8  err 2.21e-08
+ok   random                        257x1056   t_oct_p1_c16 err 2.18e-08
+ok   random                        257x1056   t_oct_p1_c32 err 2.18e-08
+ok   random                        257x1056   t_oct_p1_c64 err 2.18e-08
+ok   random                        257x1056   t_oct_p2_c8  err 2.21e-08
+ok   random                        257x1056   t_oct_p2_c16 err 2.18e-08
+ok   random                        257x1056   t_oct_p2_c32 err 2.18e-08
+ok   random                        257x1056   t_oct_p2_c64 err 2.18e-08
+ok   random                        257x1056   t_oct_p4_c8  err 2.21e-08
+ok   random                        257x1056   t_oct_p4_c16 err 2.18e-08
+ok   random                        257x1056   t_oct_p4_c32 err 2.18e-08
+ok   random                        257x1056   t_oct_p4_c64 err 2.18e-08
+ok   random                        257x1056   t_oct_p8_c8  err 2.21e-08
+ok   random                        257x1056   t_oct_p8_c16 err 2.18e-08
+ok   random                        257x1056   t_oct_p8_c32 err 2.18e-08
+ok   random                        257x1056   t_oct_p8_c64 err 2.18e-08
+ok   random                       1000x2080   s0_naive     err 1.01e-07
+ok   random                       1000x2080   s1_coalesced err 1.56e-08
+ok   random                       1000x2080   s2_vec16     err 1.44e-08
+ok   random                       1000x2080   s3_mantissa  err 5.02e-08
+ok   random                       1000x2080   s4_xregs     err 4.02e-08
+ok   random                       1000x2080   s5_tiled     err 4.02e-08
+ok   random                       1000x2080   s6_block     err 4.02e-08
+ok   random                       1000x2080   s7_loop      err 4.09e-08
+ok   random                       1000x2080   s8_octet     err 2.24e-08
+ok   random                       1000x2080   a3_xcontig   err 4.00e-08
+ok   random                       1000x2080   a7_convert   err 9.91e-09
+ok   random                       1000x2080   a8_convert   err 1.40e-08
+ok   random                       1000x2080   t_p1_r1      err 4.02e-08
+ok   random                       1000x2080   t_p1_r2      err 4.02e-08
+ok   random                       1000x2080   t_p1_r4      err 4.02e-08
+ok   random                       1000x2080   t_p2_r1      err 4.02e-08
+ok   random                       1000x2080   t_p2_r2      err 4.02e-08
+ok   random                       1000x2080   t_p2_r4      err 4.02e-08
+ok   random                       1000x2080   t_p4_r1      err 4.02e-08
+ok   random                       1000x2080   t_p4_r2      err 4.02e-08
+ok   random                       1000x2080   t_p4_r4      err 4.02e-08
+ok   random                       1000x2080   t_p8_r1      err 4.02e-08
+ok   random                       1000x2080   t_p8_r2      err 4.02e-08
+ok   random                       1000x2080   t_loop_b1_h8 err 4.02e-08
+ok   random                       1000x2080   t_loop_b1_h16 err 4.02e-08
+ok   random                       1000x2080   t_loop_b1_h32 err 4.02e-08
+ok   random                       1000x2080   t_loop_b1_h64 err 4.02e-08
+ok   random                       1000x2080   t_loop_b1_h128 err 4.02e-08
+ok   random                       1000x2080   t_loop_b2_h8 err 4.02e-08
+ok   random                       1000x2080   t_loop_b2_h16 err 4.02e-08
+ok   random                       1000x2080   t_loop_b2_h32 err 4.02e-08
+ok   random                       1000x2080   t_loop_b2_h64 err 4.02e-08
+ok   random                       1000x2080   t_loop_b2_h128 err 4.02e-08
+ok   random                       1000x2080   t_loop_b4_h8 err 4.19e-08
+ok   random                       1000x2080   t_loop_b4_h16 err 4.19e-08
+ok   random                       1000x2080   t_loop_b4_h32 err 4.19e-08
+ok   random                       1000x2080   t_loop_b4_h64 err 4.19e-08
+ok   random                       1000x2080   t_loop_b4_h128 err 4.19e-08
+ok   random                       1000x2080   t_loop_b8_h8 err 4.09e-08
+ok   random                       1000x2080   t_loop_b8_h16 err 4.09e-08
+ok   random                       1000x2080   t_loop_b8_h32 err 4.09e-08
+ok   random                       1000x2080   t_loop_b8_h64 err 4.09e-08
+ok   random                       1000x2080   t_loop_b8_h128 err 4.09e-08
+ok   random                       1000x2080   t_oct_p1_c8  err 2.24e-08
+ok   random                       1000x2080   t_oct_p1_c16 err 2.14e-08
+ok   random                       1000x2080   t_oct_p1_c32 err 2.14e-08
+ok   random                       1000x2080   t_oct_p1_c64 err 2.14e-08
+ok   random                       1000x2080   t_oct_p2_c8  err 2.24e-08
+ok   random                       1000x2080   t_oct_p2_c16 err 2.14e-08
+ok   random                       1000x2080   t_oct_p2_c32 err 2.14e-08
+ok   random                       1000x2080   t_oct_p2_c64 err 2.14e-08
+ok   random                       1000x2080   t_oct_p4_c8  err 2.24e-08
+ok   random                       1000x2080   t_oct_p4_c16 err 2.14e-08
+ok   random                       1000x2080   t_oct_p4_c32 err 2.14e-08
+ok   random                       1000x2080   t_oct_p4_c64 err 2.14e-08
+ok   random                       1000x2080   t_oct_p8_c8  err 2.24e-08
+ok   random                       1000x2080   t_oct_p8_c16 err 2.14e-08
+ok   random                       1000x2080   t_oct_p8_c32 err 2.14e-08
+ok   random                       1000x2080   t_oct_p8_c64 err 2.14e-08
+ok   random                       4096x4096   s0_naive     err 8.94e-08
+ok   random                       4096x4096   s1_coalesced err 1.35e-08
+ok   random                       4096x4096   s2_vec16     err 9.34e-09
+ok   random                       4096x4096   s3_mantissa  err 4.78e-08
+ok   random                       4096x4096   s4_xregs     err 3.48e-08
+ok   random                       4096x4096   s5_tiled     err 3.48e-08
+ok   random                       4096x4096   s6_block     err 3.42e-08
+ok   random                       4096x4096   s7_loop      err 3.46e-08
+ok   random                       4096x4096   s8_octet     err 1.89e-08
+ok   random                       4096x4096   a3_xcontig   err 3.70e-08
+ok   random                       4096x4096   a7_convert   err 7.97e-09
+ok   random                       4096x4096   a8_convert   err 5.60e-09
+ok   random                       4096x4096   t_p1_r1      err 3.42e-08
+ok   random                       4096x4096   t_p1_r2      err 3.42e-08
+ok   random                       4096x4096   t_p1_r4      err 3.42e-08
+ok   random                       4096x4096   t_p2_r1      err 3.42e-08
+ok   random                       4096x4096   t_p2_r2      err 3.42e-08
+ok   random                       4096x4096   t_p2_r4      err 3.42e-08
+ok   random                       4096x4096   t_p4_r1      err 3.42e-08
+ok   random                       4096x4096   t_p4_r2      err 3.42e-08
+ok   random                       4096x4096   t_p4_r4      err 3.42e-08
+ok   random                       4096x4096   t_p8_r1      err 3.42e-08
+ok   random                       4096x4096   t_p8_r2      err 3.42e-08
+ok   random                       4096x4096   t_loop_b1_h8 err 3.48e-08
+ok   random                       4096x4096   t_loop_b1_h16 err 3.48e-08
+ok   random                       4096x4096   t_loop_b1_h32 err 3.48e-08
+ok   random                       4096x4096   t_loop_b1_h64 err 3.48e-08
+ok   random                       4096x4096   t_loop_b1_h128 err 3.48e-08
+ok   random                       4096x4096   t_loop_b2_h8 err 3.48e-08
+ok   random                       4096x4096   t_loop_b2_h16 err 3.48e-08
+ok   random                       4096x4096   t_loop_b2_h32 err 3.48e-08
+ok   random                       4096x4096   t_loop_b2_h64 err 3.48e-08
+ok   random                       4096x4096   t_loop_b2_h128 err 3.48e-08
+ok   random                       4096x4096   t_loop_b4_h8 err 3.42e-08
+ok   random                       4096x4096   t_loop_b4_h16 err 3.42e-08
+ok   random                       4096x4096   t_loop_b4_h32 err 3.42e-08
+ok   random                       4096x4096   t_loop_b4_h64 err 3.42e-08
+ok   random                       4096x4096   t_loop_b4_h128 err 3.42e-08
+ok   random                       4096x4096   t_loop_b8_h8 err 3.46e-08
+ok   random                       4096x4096   t_loop_b8_h16 err 3.46e-08
+ok   random                       4096x4096   t_loop_b8_h32 err 3.46e-08
+ok   random                       4096x4096   t_loop_b8_h64 err 3.46e-08
+ok   random                       4096x4096   t_loop_b8_h128 err 3.46e-08
+ok   random                       4096x4096   t_oct_p1_c8  err 1.89e-08
+ok   random                       4096x4096   t_oct_p1_c16 err 1.91e-08
+ok   random                       4096x4096   t_oct_p1_c32 err 1.89e-08
+ok   random                       4096x4096   t_oct_p1_c64 err 1.89e-08
+ok   random                       4096x4096   t_oct_p2_c8  err 1.89e-08
+ok   random                       4096x4096   t_oct_p2_c16 err 1.91e-08
+ok   random                       4096x4096   t_oct_p2_c32 err 1.89e-08
+ok   random                       4096x4096   t_oct_p2_c64 err 1.89e-08
+ok   random                       4096x4096   t_oct_p4_c8  err 1.89e-08
+ok   random                       4096x4096   t_oct_p4_c16 err 1.91e-08
+ok   random                       4096x4096   t_oct_p4_c32 err 1.89e-08
+ok   random                       4096x4096   t_oct_p4_c64 err 1.89e-08
+ok   random                       4096x4096   t_oct_p8_c8  err 1.89e-08
+ok   random                       4096x4096   t_oct_p8_c16 err 1.91e-08
+ok   random                       4096x4096   t_oct_p8_c32 err 1.89e-08
+ok   random                       4096x4096   t_oct_p8_c64 err 1.89e-08
+ok   random                      11008x4096   s0_naive     err 1.67e-07
+ok   random                      11008x4096   s1_coalesced err 1.43e-08
+ok   random                      11008x4096   s2_vec16     err 1.12e-08
+ok   random                      11008x4096   s3_mantissa  err 5.02e-08
+ok   random                      11008x4096   s4_xregs     err 4.00e-08
+ok   random                      11008x4096   s5_tiled     err 4.00e-08
+ok   random                      11008x4096   s6_block     err 3.91e-08
+ok   random                      11008x4096   s7_loop      err 3.97e-08
+ok   random                      11008x4096   s8_octet     err 1.94e-08
+ok   random                      11008x4096   a3_xcontig   err 3.89e-08
+ok   random                      11008x4096   a7_convert   err 8.09e-09
+ok   random                      11008x4096   a8_convert   err 5.98e-09
+ok   random                      11008x4096   t_p1_r1      err 3.91e-08
+ok   random                      11008x4096   t_p1_r2      err 3.91e-08
+ok   random                      11008x4096   t_p1_r4      err 3.91e-08
+ok   random                      11008x4096   t_p2_r1      err 3.91e-08
+ok   random                      11008x4096   t_p2_r2      err 3.91e-08
+ok   random                      11008x4096   t_p2_r4      err 3.91e-08
+ok   random                      11008x4096   t_p4_r1      err 3.91e-08
+ok   random                      11008x4096   t_p4_r2      err 3.91e-08
+ok   random                      11008x4096   t_p4_r4      err 3.91e-08
+ok   random                      11008x4096   t_p8_r1      err 3.91e-08
+ok   random                      11008x4096   t_p8_r2      err 3.91e-08
+ok   random                      11008x4096   t_loop_b1_h8 err 3.86e-08
+ok   random                      11008x4096   t_loop_b1_h16 err 3.86e-08
+ok   random                      11008x4096   t_loop_b1_h32 err 3.86e-08
+ok   random                      11008x4096   t_loop_b1_h64 err 3.86e-08
+ok   random                      11008x4096   t_loop_b1_h128 err 3.86e-08
+ok   random                      11008x4096   t_loop_b2_h8 err 3.86e-08
+ok   random                      11008x4096   t_loop_b2_h16 err 3.86e-08
+ok   random                      11008x4096   t_loop_b2_h32 err 3.86e-08
+ok   random                      11008x4096   t_loop_b2_h64 err 3.86e-08
+ok   random                      11008x4096   t_loop_b2_h128 err 3.86e-08
+ok   random                      11008x4096   t_loop_b4_h8 err 4.00e-08
+ok   random                      11008x4096   t_loop_b4_h16 err 4.00e-08
+ok   random                      11008x4096   t_loop_b4_h32 err 4.00e-08
+ok   random                      11008x4096   t_loop_b4_h64 err 4.00e-08
+ok   random                      11008x4096   t_loop_b4_h128 err 4.00e-08
+ok   random                      11008x4096   t_loop_b8_h8 err 3.97e-08
+ok   random                      11008x4096   t_loop_b8_h16 err 3.97e-08
+ok   random                      11008x4096   t_loop_b8_h32 err 3.97e-08
+ok   random                      11008x4096   t_loop_b8_h64 err 3.97e-08
+ok   random                      11008x4096   t_loop_b8_h128 err 3.97e-08
+ok   random                      11008x4096   t_oct_p1_c8  err 1.94e-08
+ok   random                      11008x4096   t_oct_p1_c16 err 1.91e-08
+ok   random                      11008x4096   t_oct_p1_c32 err 1.99e-08
+ok   random                      11008x4096   t_oct_p1_c64 err 1.99e-08
+ok   random                      11008x4096   t_oct_p2_c8  err 1.94e-08
+ok   random                      11008x4096   t_oct_p2_c16 err 1.91e-08
+ok   random                      11008x4096   t_oct_p2_c32 err 1.99e-08
+ok   random                      11008x4096   t_oct_p2_c64 err 1.99e-08
+ok   random                      11008x4096   t_oct_p4_c8  err 1.94e-08
+ok   random                      11008x4096   t_oct_p4_c16 err 1.91e-08
+ok   random                      11008x4096   t_oct_p4_c32 err 1.99e-08
+ok   random                      11008x4096   t_oct_p4_c64 err 1.99e-08
+ok   random                      11008x4096   t_oct_p8_c8  err 1.94e-08
+ok   random                      11008x4096   t_oct_p8_c16 err 1.91e-08
+ok   random                      11008x4096   t_oct_p8_c32 err 1.99e-08
+ok   random                      11008x4096   t_oct_p8_c64 err 1.99e-08
+ok   random                          3x32768  s0_naive     err 6.17e-09
+ok   random                          3x32768  s1_coalesced err 1.77e-09
+ok   random                          3x32768  s2_vec16     err 9.31e-10
+ok   random                          3x32768  s3_mantissa  err 5.96e-09
+ok   random                          3x32768  s4_xregs     err 3.83e-09
+ok   random                          3x32768  s5_tiled     err 3.25e-09
+ok   random                          3x32768  s6_block     err 3.25e-09
+ok   random                          3x32768  s7_loop      err 4.41e-09
+ok   random                          3x32768  s8_octet     err 1.13e-09
+ok   random                          3x32768  a3_xcontig   err 4.60e-09
+ok   random                          3x32768  a7_convert   err 3.25e-09
+ok   random                          3x32768  a8_convert   err 4.94e-10
+ok   random                          3x32768  t_p1_r1      err 5.56e-09
+ok   random                          3x32768  t_p1_r2      err 3.25e-09
+ok   random                          3x32768  t_p1_r4      err 3.83e-09
+ok   random                          3x32768  t_p2_r1      err 3.83e-09
+ok   random                          3x32768  t_p2_r2      err 2.67e-09
+ok   random                          3x32768  t_p2_r4      err 3.83e-09
+ok   random                          3x32768  t_p4_r1      err 3.83e-09
+ok   random                          3x32768  t_p4_r2      err 3.83e-09
+ok   random                          3x32768  t_p4_r4      err 3.25e-09
+ok   random                          3x32768  t_p8_r1      err 2.09e-09
+ok   random                          3x32768  t_p8_r2      err 3.83e-09
+ok   random                          3x32768  t_loop_b1_h8 err 2.67e-09
+ok   random                          3x32768  t_loop_b1_h16 err 2.67e-09
+ok   random                          3x32768  t_loop_b1_h32 err 2.67e-09
+ok   random                          3x32768  t_loop_b1_h64 err 2.67e-09
+ok   random                          3x32768  t_loop_b1_h128 err 2.67e-09
+ok   random                          3x32768  t_loop_b2_h8 err 2.67e-09
+ok   random                          3x32768  t_loop_b2_h16 err 2.67e-09
+ok   random                          3x32768  t_loop_b2_h32 err 2.67e-09
+ok   random                          3x32768  t_loop_b2_h64 err 2.67e-09
+ok   random                          3x32768  t_loop_b2_h128 err 2.67e-09
+ok   random                          3x32768  t_loop_b4_h8 err 3.83e-09
+ok   random                          3x32768  t_loop_b4_h16 err 3.83e-09
+ok   random                          3x32768  t_loop_b4_h32 err 3.83e-09
+ok   random                          3x32768  t_loop_b4_h64 err 3.83e-09
+ok   random                          3x32768  t_loop_b4_h128 err 3.83e-09
+ok   random                          3x32768  t_loop_b8_h8 err 2.67e-09
+ok   random                          3x32768  t_loop_b8_h16 err 3.25e-09
+ok   random                          3x32768  t_loop_b8_h32 err 2.76e-09
+ok   random                          3x32768  t_loop_b8_h64 err 3.83e-09
+ok   random                          3x32768  t_loop_b8_h128 err 3.83e-09
+ok   random                          3x32768  t_oct_p1_c8  err 1.13e-09
+ok   random                          3x32768  t_oct_p1_c16 err 1.70e-09
+ok   random                          3x32768  t_oct_p1_c32 err 1.59e-09
+ok   random                          3x32768  t_oct_p1_c64 err 1.91e-09
+ok   random                          3x32768  t_oct_p2_c8  err 1.13e-09
+ok   random                          3x32768  t_oct_p2_c16 err 1.70e-09
+ok   random                          3x32768  t_oct_p2_c32 err 1.59e-09
+ok   random                          3x32768  t_oct_p2_c64 err 1.91e-09
+ok   random                          3x32768  t_oct_p4_c8  err 9.31e-10
+ok   random                          3x32768  t_oct_p4_c16 err 1.70e-09
+ok   random                          3x32768  t_oct_p4_c32 err 1.59e-09
+ok   random                          3x32768  t_oct_p4_c64 err 1.91e-09
+ok   random                          3x32768  t_oct_p8_c8  err 9.31e-10
+ok   random                          3x32768  t_oct_p8_c16 err 1.70e-09
+ok   random                          3x32768  t_oct_p8_c32 err 1.59e-09
+ok   random                          3x32768  t_oct_p8_c64 err 1.91e-09
+ok   random                       2048x33792  s0_naive     err 8.82e-08
+ok   random                       2048x33792  s1_coalesced err 1.29e-08
+ok   random                       2048x33792  s2_vec16     err 3.32e-09
+ok   random                       2048x33792  s3_mantissa  err 1.33e-08
+ok   random                       2048x33792  s4_xregs     err 9.56e-09
+ok   random                       2048x33792  s5_tiled     err 1.01e-08
+ok   random                       2048x33792  s6_block     err 1.01e-08
+ok   random                       2048x33792  s7_loop      err 1.03e-08
+ok   random                       2048x33792  s8_octet     err 7.72e-09
+ok   random                       2048x33792  a3_xcontig   err 1.33e-08
+ok   random                       2048x33792  a7_convert   err 1.04e-08
+ok   random                       2048x33792  a8_convert   err 5.43e-09
+ok   random                       2048x33792  t_p1_r1      err 1.04e-08
+ok   random                       2048x33792  t_p1_r2      err 1.03e-08
+ok   random                       2048x33792  t_p1_r4      err 1.03e-08
+ok   random                       2048x33792  t_p2_r1      err 1.01e-08
+ok   random                       2048x33792  t_p2_r2      err 9.56e-09
+ok   random                       2048x33792  t_p2_r4      err 1.06e-08
+ok   random                       2048x33792  t_p4_r1      err 1.03e-08
+ok   random                       2048x33792  t_p4_r2      err 9.83e-09
+ok   random                       2048x33792  t_p4_r4      err 1.05e-08
+ok   random                       2048x33792  t_p8_r1      err 1.03e-08
+ok   random                       2048x33792  t_p8_r2      err 1.07e-08
+ok   random                       2048x33792  t_loop_b1_h8 err 1.11e-08
+ok   random                       2048x33792  t_loop_b1_h16 err 9.80e-09
+ok   random                       2048x33792  t_loop_b1_h32 err 1.12e-08
+ok   random                       2048x33792  t_loop_b1_h64 err 9.80e-09
+ok   random                       2048x33792  t_loop_b1_h128 err 9.83e-09
+ok   random                       2048x33792  t_loop_b2_h8 err 9.75e-09
+ok   random                       2048x33792  t_loop_b2_h16 err 1.03e-08
+ok   random                       2048x33792  t_loop_b2_h32 err 1.06e-08
+ok   random                       2048x33792  t_loop_b2_h64 err 1.03e-08
+ok   random                       2048x33792  t_loop_b2_h128 err 1.01e-08
+ok   random                       2048x33792  t_loop_b4_h8 err 1.03e-08
+ok   random                       2048x33792  t_loop_b4_h16 err 9.83e-09
+ok   random                       2048x33792  t_loop_b4_h32 err 1.04e-08
+ok   random                       2048x33792  t_loop_b4_h64 err 1.00e-08
+ok   random                       2048x33792  t_loop_b4_h128 err 1.01e-08
+ok   random                       2048x33792  t_loop_b8_h8 err 1.01e-08
+ok   random                       2048x33792  t_loop_b8_h16 err 9.80e-09
+ok   random                       2048x33792  t_loop_b8_h32 err 9.83e-09
+ok   random                       2048x33792  t_loop_b8_h64 err 9.75e-09
+ok   random                       2048x33792  t_loop_b8_h128 err 9.58e-09
+ok   random                       2048x33792  t_oct_p1_c8  err 7.72e-09
+ok   random                       2048x33792  t_oct_p1_c16 err 6.55e-09
+ok   random                       2048x33792  t_oct_p1_c32 err 6.99e-09
+ok   random                       2048x33792  t_oct_p1_c64 err 7.48e-09
+ok   random                       2048x33792  t_oct_p2_c8  err 7.72e-09
+ok   random                       2048x33792  t_oct_p2_c16 err 6.55e-09
+ok   random                       2048x33792  t_oct_p2_c32 err 6.99e-09
+ok   random                       2048x33792  t_oct_p2_c64 err 7.48e-09
+ok   random                       2048x33792  t_oct_p4_c8  err 7.72e-09
+ok   random                       2048x33792  t_oct_p4_c16 err 6.55e-09
+ok   random                       2048x33792  t_oct_p4_c32 err 6.99e-09
+ok   random                       2048x33792  t_oct_p4_c64 err 7.48e-09
+ok   random                       2048x33792  t_oct_p8_c8  err 7.72e-09
+ok   random                       2048x33792  t_oct_p8_c16 err 7.72e-09
+ok   random                       2048x33792  t_oct_p8_c32 err 6.99e-09
+ok   random                       2048x33792  t_oct_p8_c64 err 7.48e-09
+ok   random                       8192x8192   s0_naive     err 1.30e-07
+ok   random                       8192x8192   s1_coalesced err 2.01e-08
+ok   random                       8192x8192   s2_vec16     err 9.89e-09
+ok   random                       8192x8192   s3_mantissa  err 3.82e-08
+ok   random                       8192x8192   s4_xregs     err 2.93e-08
+ok   random                       8192x8192   s5_tiled     err 2.88e-08
+ok   random                       8192x8192   s6_block     err 2.92e-08
+ok   random                       8192x8192   s7_loop      err 2.85e-08
+ok   random                       8192x8192   s8_octet     err 1.47e-08
+ok   random                       8192x8192   a3_xcontig   err 2.79e-08
+ok   random                       8192x8192   a7_convert   err 5.56e-09
+ok   random                       8192x8192   a8_convert   err 5.68e-09
+ok   random                       8192x8192   t_p1_r1      err 2.92e-08
+ok   random                       8192x8192   t_p1_r2      err 2.92e-08
+ok   random                       8192x8192   t_p1_r4      err 2.92e-08
+ok   random                       8192x8192   t_p2_r1      err 2.92e-08
+ok   random                       8192x8192   t_p2_r2      err 2.92e-08
+ok   random                       8192x8192   t_p2_r4      err 2.92e-08
+ok   random                       8192x8192   t_p4_r1      err 2.92e-08
+ok   random                       8192x8192   t_p4_r2      err 2.92e-08
+ok   random                       8192x8192   t_p4_r4      err 2.92e-08
+ok   random                       8192x8192   t_p8_r1      err 2.92e-08
+ok   random                       8192x8192   t_p8_r2      err 2.92e-08
+ok   random                       8192x8192   t_loop_b1_h8 err 2.88e-08
+ok   random                       8192x8192   t_loop_b1_h16 err 2.88e-08
+ok   random                       8192x8192   t_loop_b1_h32 err 2.88e-08
+ok   random                       8192x8192   t_loop_b1_h64 err 2.88e-08
+ok   random                       8192x8192   t_loop_b1_h128 err 2.88e-08
+ok   random                       8192x8192   t_loop_b2_h8 err 2.88e-08
+ok   random                       8192x8192   t_loop_b2_h16 err 2.88e-08
+ok   random                       8192x8192   t_loop_b2_h32 err 2.88e-08
+ok   random                       8192x8192   t_loop_b2_h64 err 2.88e-08
+ok   random                       8192x8192   t_loop_b2_h128 err 2.88e-08
+ok   random                       8192x8192   t_loop_b4_h8 err 2.91e-08
+ok   random                       8192x8192   t_loop_b4_h16 err 2.91e-08
+ok   random                       8192x8192   t_loop_b4_h32 err 2.91e-08
+ok   random                       8192x8192   t_loop_b4_h64 err 2.91e-08
+ok   random                       8192x8192   t_loop_b4_h128 err 2.91e-08
+ok   random                       8192x8192   t_loop_b8_h8 err 2.85e-08
+ok   random                       8192x8192   t_loop_b8_h16 err 2.85e-08
+ok   random                       8192x8192   t_loop_b8_h32 err 2.85e-08
+ok   random                       8192x8192   t_loop_b8_h64 err 2.85e-08
+ok   random                       8192x8192   t_loop_b8_h128 err 2.85e-08
+ok   random                       8192x8192   t_oct_p1_c8  err 1.47e-08
+ok   random                       8192x8192   t_oct_p1_c16 err 1.36e-08
+ok   random                       8192x8192   t_oct_p1_c32 err 1.44e-08
+ok   random                       8192x8192   t_oct_p1_c64 err 1.43e-08
+ok   random                       8192x8192   t_oct_p2_c8  err 1.47e-08
+ok   random                       8192x8192   t_oct_p2_c16 err 1.36e-08
+ok   random                       8192x8192   t_oct_p2_c32 err 1.44e-08
+ok   random                       8192x8192   t_oct_p2_c64 err 1.43e-08
+ok   random                       8192x8192   t_oct_p4_c8  err 1.47e-08
+ok   random                       8192x8192   t_oct_p4_c16 err 1.36e-08
+ok   random                       8192x8192   t_oct_p4_c32 err 1.44e-08
+ok   random                       8192x8192   t_oct_p4_c64 err 1.43e-08
+ok   random                       8192x8192   t_oct_p8_c8  err 1.47e-08
+ok   random                       8192x8192   t_oct_p8_c16 err 1.36e-08
+ok   random                       8192x8192   t_oct_p8_c32 err 1.44e-08
+ok   random                       8192x8192   t_oct_p8_c64 err 1.43e-08
+ok   random                         65x1536   s0_naive     err 5.62e-08
+ok   random                         65x1536   s1_coalesced err 9.18e-09
+ok   random                         65x1536   s2_vec16     err 1.46e-08
+ok   random                         65x1536   s3_mantissa  err 4.25e-08
+ok   random                         65x1536   s4_xregs     err 4.09e-08
+ok   random                         65x1536   s5_tiled     err 4.09e-08
+ok   random                         65x1536   s6_block     err 4.09e-08
+ok   random                         65x1536   s7_loop      err 4.17e-08
+ok   random                         65x1536   s8_octet     err 1.93e-08
+ok   random                         65x1536   a3_xcontig   err 4.02e-08
+ok   random                         65x1536   a7_convert   err 6.03e-09
+ok   random                         65x1536   a8_convert   err 7.09e-09
+ok   random                         65x1536   t_p1_r1      err 4.09e-08
+ok   random                         65x1536   t_p1_r2      err 4.09e-08
+ok   random                         65x1536   t_p1_r4      err 4.09e-08
+ok   random                         65x1536   t_p2_r1      err 4.09e-08
+ok   random                         65x1536   t_p2_r2      err 4.09e-08
+ok   random                         65x1536   t_p2_r4      err 4.09e-08
+ok   random                         65x1536   t_p4_r1      err 4.09e-08
+ok   random                         65x1536   t_p4_r2      err 4.09e-08
+ok   random                         65x1536   t_p4_r4      err 4.09e-08
+ok   random                         65x1536   t_p8_r1      err 4.09e-08
+ok   random                         65x1536   t_p8_r2      err 4.09e-08
+ok   random                         65x1536   t_loop_b1_h8 err 3.87e-08
+ok   random                         65x1536   t_loop_b1_h16 err 3.87e-08
+ok   random                         65x1536   t_loop_b1_h32 err 3.87e-08
+ok   random                         65x1536   t_loop_b1_h64 err 3.87e-08
+ok   random                         65x1536   t_loop_b1_h128 err 3.87e-08
+ok   random                         65x1536   t_loop_b2_h8 err 3.87e-08
+ok   random                         65x1536   t_loop_b2_h16 err 3.87e-08
+ok   random                         65x1536   t_loop_b2_h32 err 3.87e-08
+ok   random                         65x1536   t_loop_b2_h64 err 3.87e-08
+ok   random                         65x1536   t_loop_b2_h128 err 3.87e-08
+ok   random                         65x1536   t_loop_b4_h8 err 4.02e-08
+ok   random                         65x1536   t_loop_b4_h16 err 4.02e-08
+ok   random                         65x1536   t_loop_b4_h32 err 4.02e-08
+ok   random                         65x1536   t_loop_b4_h64 err 4.02e-08
+ok   random                         65x1536   t_loop_b4_h128 err 4.02e-08
+ok   random                         65x1536   t_loop_b8_h8 err 4.17e-08
+ok   random                         65x1536   t_loop_b8_h16 err 4.17e-08
+ok   random                         65x1536   t_loop_b8_h32 err 4.17e-08
+ok   random                         65x1536   t_loop_b8_h64 err 4.17e-08
+ok   random                         65x1536   t_loop_b8_h128 err 4.17e-08
+ok   random                         65x1536   t_oct_p1_c8  err 1.93e-08
+ok   random                         65x1536   t_oct_p1_c16 err 2.05e-08
+ok   random                         65x1536   t_oct_p1_c32 err 2.05e-08
+ok   random                         65x1536   t_oct_p1_c64 err 2.05e-08
+ok   random                         65x1536   t_oct_p2_c8  err 1.93e-08
+ok   random                         65x1536   t_oct_p2_c16 err 2.05e-08
+ok   random                         65x1536   t_oct_p2_c32 err 2.05e-08
+ok   random                         65x1536   t_oct_p2_c64 err 2.05e-08
+ok   random                         65x1536   t_oct_p4_c8  err 1.93e-08
+ok   random                         65x1536   t_oct_p4_c16 err 2.05e-08
+ok   random                         65x1536   t_oct_p4_c32 err 2.05e-08
+ok   random                         65x1536   t_oct_p4_c64 err 2.05e-08
+ok   random                         65x1536   t_oct_p8_c8  err 1.93e-08
+ok   random                         65x1536   t_oct_p8_c16 err 2.05e-08
+ok   random                         65x1536   t_oct_p8_c32 err 2.05e-08
+ok   random                         65x1536   t_oct_p8_c64 err 2.05e-08
+ok   all -8                        513x2048   s0_naive     err 1.47e-07
+ok   all -8                        513x2048   s1_coalesced err 2.15e-08
+ok   all -8                        513x2048   s2_vec16     err 1.79e-08
+ok   all -8                        513x2048   s3_mantissa  err 1.79e-08
+ok   all -8                        513x2048   s4_xregs     err 3.42e-08
+ok   all -8                        513x2048   s5_tiled     err 3.42e-08
+ok   all -8                        513x2048   s6_block     err 3.42e-08
+ok   all -8                        513x2048   s7_loop      err 3.42e-08
+ok   all -8                        513x2048   s8_octet     err 1.35e-08
+ok   all -8                        513x2048   a3_xcontig   err 2.80e-08
+ok   all -8                        513x2048   a7_convert   err 1.12e-08
+ok   all -8                        513x2048   a8_convert   err 1.02e-08
+ok   all -8                        513x2048   t_p1_r1      err 3.42e-08
+ok   all -8                        513x2048   t_p1_r2      err 3.42e-08
+ok   all -8                        513x2048   t_p1_r4      err 3.42e-08
+ok   all -8                        513x2048   t_p2_r1      err 3.42e-08
+ok   all -8                        513x2048   t_p2_r2      err 3.42e-08
+ok   all -8                        513x2048   t_p2_r4      err 3.42e-08
+ok   all -8                        513x2048   t_p4_r1      err 3.42e-08
+ok   all -8                        513x2048   t_p4_r2      err 3.42e-08
+ok   all -8                        513x2048   t_p4_r4      err 3.42e-08
+ok   all -8                        513x2048   t_p8_r1      err 3.42e-08
+ok   all -8                        513x2048   t_p8_r2      err 3.42e-08
+ok   all -8                        513x2048   t_loop_b1_h8 err 2.89e-08
+ok   all -8                        513x2048   t_loop_b1_h16 err 2.89e-08
+ok   all -8                        513x2048   t_loop_b1_h32 err 2.89e-08
+ok   all -8                        513x2048   t_loop_b1_h64 err 2.89e-08
+ok   all -8                        513x2048   t_loop_b1_h128 err 2.89e-08
+ok   all -8                        513x2048   t_loop_b2_h8 err 2.89e-08
+ok   all -8                        513x2048   t_loop_b2_h16 err 2.89e-08
+ok   all -8                        513x2048   t_loop_b2_h32 err 2.89e-08
+ok   all -8                        513x2048   t_loop_b2_h64 err 2.89e-08
+ok   all -8                        513x2048   t_loop_b2_h128 err 2.89e-08
+ok   all -8                        513x2048   t_loop_b4_h8 err 3.42e-08
+ok   all -8                        513x2048   t_loop_b4_h16 err 3.42e-08
+ok   all -8                        513x2048   t_loop_b4_h32 err 3.42e-08
+ok   all -8                        513x2048   t_loop_b4_h64 err 3.42e-08
+ok   all -8                        513x2048   t_loop_b4_h128 err 3.42e-08
+ok   all -8                        513x2048   t_loop_b8_h8 err 3.42e-08
+ok   all -8                        513x2048   t_loop_b8_h16 err 3.42e-08
+ok   all -8                        513x2048   t_loop_b8_h32 err 3.42e-08
+ok   all -8                        513x2048   t_loop_b8_h64 err 3.42e-08
+ok   all -8                        513x2048   t_loop_b8_h128 err 3.42e-08
+ok   all -8                        513x2048   t_oct_p1_c8  err 1.35e-08
+ok   all -8                        513x2048   t_oct_p1_c16 err 1.64e-08
+ok   all -8                        513x2048   t_oct_p1_c32 err 1.64e-08
+ok   all -8                        513x2048   t_oct_p1_c64 err 1.64e-08
+ok   all -8                        513x2048   t_oct_p2_c8  err 1.35e-08
+ok   all -8                        513x2048   t_oct_p2_c16 err 1.64e-08
+ok   all -8                        513x2048   t_oct_p2_c32 err 1.64e-08
+ok   all -8                        513x2048   t_oct_p2_c64 err 1.64e-08
+ok   all -8                        513x2048   t_oct_p4_c8  err 1.35e-08
+ok   all -8                        513x2048   t_oct_p4_c16 err 1.64e-08
+ok   all -8                        513x2048   t_oct_p4_c32 err 1.64e-08
+ok   all -8                        513x2048   t_oct_p4_c64 err 1.64e-08
+ok   all -8                        513x2048   t_oct_p8_c8  err 1.35e-08
+ok   all -8                        513x2048   t_oct_p8_c16 err 1.64e-08
+ok   all -8                        513x2048   t_oct_p8_c32 err 1.64e-08
+ok   all -8                        513x2048   t_oct_p8_c64 err 1.64e-08
+ok   all 7                         513x2048   s0_naive     err 1.72e-07
+ok   all 7                         513x2048   s1_coalesced err 2.11e-08
+ok   all 7                         513x2048   s2_vec16     err 1.80e-08
+ok   all 7                         513x2048   s3_mantissa  err 7.57e-08
+ok   all 7                         513x2048   s4_xregs     err 6.20e-08
+ok   all 7                         513x2048   s5_tiled     err 6.20e-08
+ok   all 7                         513x2048   s6_block     err 6.20e-08
+ok   all 7                         513x2048   s7_loop      err 6.67e-08
+ok   all 7                         513x2048   s8_octet     err 2.64e-08
+ok   all 7                         513x2048   a3_xcontig   err 6.32e-08
+ok   all 7                         513x2048   a7_convert   err 1.12e-08
+ok   all 7                         513x2048   a8_convert   err 9.49e-09
+ok   all 7                         513x2048   t_p1_r1      err 6.20e-08
+ok   all 7                         513x2048   t_p1_r2      err 6.20e-08
+ok   all 7                         513x2048   t_p1_r4      err 6.20e-08
+ok   all 7                         513x2048   t_p2_r1      err 6.20e-08
+ok   all 7                         513x2048   t_p2_r2      err 6.20e-08
+ok   all 7                         513x2048   t_p2_r4      err 6.20e-08
+ok   all 7                         513x2048   t_p4_r1      err 6.20e-08
+ok   all 7                         513x2048   t_p4_r2      err 6.20e-08
+ok   all 7                         513x2048   t_p4_r4      err 6.20e-08
+ok   all 7                         513x2048   t_p8_r1      err 6.20e-08
+ok   all 7                         513x2048   t_p8_r2      err 6.20e-08
+ok   all 7                         513x2048   t_loop_b1_h8 err 6.20e-08
+ok   all 7                         513x2048   t_loop_b1_h16 err 6.20e-08
+ok   all 7                         513x2048   t_loop_b1_h32 err 6.20e-08
+ok   all 7                         513x2048   t_loop_b1_h64 err 6.20e-08
+ok   all 7                         513x2048   t_loop_b1_h128 err 6.20e-08
+ok   all 7                         513x2048   t_loop_b2_h8 err 6.20e-08
+ok   all 7                         513x2048   t_loop_b2_h16 err 6.20e-08
+ok   all 7                         513x2048   t_loop_b2_h32 err 6.20e-08
+ok   all 7                         513x2048   t_loop_b2_h64 err 6.20e-08
+ok   all 7                         513x2048   t_loop_b2_h128 err 6.20e-08
+ok   all 7                         513x2048   t_loop_b4_h8 err 6.43e-08
+ok   all 7                         513x2048   t_loop_b4_h16 err 6.43e-08
+ok   all 7                         513x2048   t_loop_b4_h32 err 6.43e-08
+ok   all 7                         513x2048   t_loop_b4_h64 err 6.43e-08
+ok   all 7                         513x2048   t_loop_b4_h128 err 6.43e-08
+ok   all 7                         513x2048   t_loop_b8_h8 err 6.67e-08
+ok   all 7                         513x2048   t_loop_b8_h16 err 6.67e-08
+ok   all 7                         513x2048   t_loop_b8_h32 err 6.67e-08
+ok   all 7                         513x2048   t_loop_b8_h64 err 6.67e-08
+ok   all 7                         513x2048   t_loop_b8_h128 err 6.67e-08
+ok   all 7                         513x2048   t_oct_p1_c8  err 2.64e-08
+ok   all 7                         513x2048   t_oct_p1_c16 err 2.36e-08
+ok   all 7                         513x2048   t_oct_p1_c32 err 2.36e-08
+ok   all 7                         513x2048   t_oct_p1_c64 err 2.36e-08
+ok   all 7                         513x2048   t_oct_p2_c8  err 2.64e-08
+ok   all 7                         513x2048   t_oct_p2_c16 err 2.36e-08
+ok   all 7                         513x2048   t_oct_p2_c32 err 2.36e-08
+ok   all 7                         513x2048   t_oct_p2_c64 err 2.36e-08
+ok   all 7                         513x2048   t_oct_p4_c8  err 2.64e-08
+ok   all 7                         513x2048   t_oct_p4_c16 err 2.36e-08
+ok   all 7                         513x2048   t_oct_p4_c32 err 2.36e-08
+ok   all 7                         513x2048   t_oct_p4_c64 err 2.36e-08
+ok   all 7                         513x2048   t_oct_p8_c8  err 2.64e-08
+ok   all 7                         513x2048   t_oct_p8_c16 err 2.36e-08
+ok   all 7                         513x2048   t_oct_p8_c32 err 2.36e-08
+ok   all 7                         513x2048   t_oct_p8_c64 err 2.36e-08
+ok   position                     2048x2048   s0_naive     err 0.00e+00
+ok   position                     2048x2048   s1_coalesced err 0.00e+00
+ok   position                     2048x2048   s2_vec16     err 0.00e+00
+ok   position                     2048x2048   s3_mantissa  err 0.00e+00
+ok   position                     2048x2048   s4_xregs     err 0.00e+00
+ok   position                     2048x2048   s5_tiled     err 0.00e+00
+ok   position                     2048x2048   s6_block     err 0.00e+00
+ok   position                     2048x2048   s7_loop      err 0.00e+00
+ok   position                     2048x2048   s8_octet     err 0.00e+00
+ok   position                     2048x2048   a3_xcontig   err 0.00e+00
+ok   position                     2048x2048   a7_convert   err 0.00e+00
+ok   position                     2048x2048   a8_convert   err 0.00e+00
+ok   position                     2048x2048   t_p1_r1      err 0.00e+00
+ok   position                     2048x2048   t_p1_r2      err 0.00e+00
+ok   position                     2048x2048   t_p1_r4      err 0.00e+00
+ok   position                     2048x2048   t_p2_r1      err 0.00e+00
+ok   position                     2048x2048   t_p2_r2      err 0.00e+00
+ok   position                     2048x2048   t_p2_r4      err 0.00e+00
+ok   position                     2048x2048   t_p4_r1      err 0.00e+00
+ok   position                     2048x2048   t_p4_r2      err 0.00e+00
+ok   position                     2048x2048   t_p4_r4      err 0.00e+00
+ok   position                     2048x2048   t_p8_r1      err 0.00e+00
+ok   position                     2048x2048   t_p8_r2      err 0.00e+00
+ok   position                     2048x2048   t_loop_b1_h8 err 0.00e+00
+ok   position                     2048x2048   t_loop_b1_h16 err 0.00e+00
+ok   position                     2048x2048   t_loop_b1_h32 err 0.00e+00
+ok   position                     2048x2048   t_loop_b1_h64 err 0.00e+00
+ok   position                     2048x2048   t_loop_b1_h128 err 0.00e+00
+ok   position                     2048x2048   t_loop_b2_h8 err 0.00e+00
+ok   position                     2048x2048   t_loop_b2_h16 err 0.00e+00
+ok   position                     2048x2048   t_loop_b2_h32 err 0.00e+00
+ok   position                     2048x2048   t_loop_b2_h64 err 0.00e+00
+ok   position                     2048x2048   t_loop_b2_h128 err 0.00e+00
+ok   position                     2048x2048   t_loop_b4_h8 err 0.00e+00
+ok   position                     2048x2048   t_loop_b4_h16 err 0.00e+00
+ok   position                     2048x2048   t_loop_b4_h32 err 0.00e+00
+ok   position                     2048x2048   t_loop_b4_h64 err 0.00e+00
+ok   position                     2048x2048   t_loop_b4_h128 err 0.00e+00
+ok   position                     2048x2048   t_loop_b8_h8 err 0.00e+00
+ok   position                     2048x2048   t_loop_b8_h16 err 0.00e+00
+ok   position                     2048x2048   t_loop_b8_h32 err 0.00e+00
+ok   position                     2048x2048   t_loop_b8_h64 err 0.00e+00
+ok   position                     2048x2048   t_loop_b8_h128 err 0.00e+00
+ok   position                     2048x2048   t_oct_p1_c8  err 0.00e+00
+ok   position                     2048x2048   t_oct_p1_c16 err 0.00e+00
+ok   position                     2048x2048   t_oct_p1_c32 err 0.00e+00
+ok   position                     2048x2048   t_oct_p1_c64 err 0.00e+00
+ok   position                     2048x2048   t_oct_p2_c8  err 0.00e+00
+ok   position                     2048x2048   t_oct_p2_c16 err 0.00e+00
+ok   position                     2048x2048   t_oct_p2_c32 err 0.00e+00
+ok   position                     2048x2048   t_oct_p2_c64 err 0.00e+00
+ok   position                     2048x2048   t_oct_p4_c8  err 0.00e+00
+ok   position                     2048x2048   t_oct_p4_c16 err 0.00e+00
+ok   position                     2048x2048   t_oct_p4_c32 err 0.00e+00
+ok   position                     2048x2048   t_oct_p4_c64 err 0.00e+00
+ok   position                     2048x2048   t_oct_p8_c8  err 0.00e+00
+ok   position                     2048x2048   t_oct_p8_c16 err 0.00e+00
+ok   position                     2048x2048   t_oct_p8_c32 err 0.00e+00
+ok   position                     2048x2048   t_oct_p8_c64 err 0.00e+00
+ok   quantized                     512x1024   s0_naive     err 4.32e-08
+ok   quantized                     512x1024   s1_coalesced err 1.10e-08
+ok   quantized                     512x1024   s2_vec16     err 1.10e-08
+ok   quantized                     512x1024   s3_mantissa  err 5.77e-08
+ok   quantized                     512x1024   s4_xregs     err 3.75e-08
+ok   quantized                     512x1024   s5_tiled     err 3.75e-08
+ok   quantized                     512x1024   s6_block     err 3.75e-08
+ok   quantized                     512x1024   s7_loop      err 3.60e-08
+ok   quantized                     512x1024   s8_octet     err 2.98e-08
+ok   quantized                     512x1024   a3_xcontig   err 3.70e-08
+ok   quantized                     512x1024   a7_convert   err 6.45e-09
+ok   quantized                     512x1024   a8_convert   err 6.30e-09
+ok   quantized                     512x1024   t_p1_r1      err 3.75e-08
+ok   quantized                     512x1024   t_p1_r2      err 3.75e-08
+ok   quantized                     512x1024   t_p1_r4      err 3.75e-08
+ok   quantized                     512x1024   t_p2_r1      err 3.75e-08
+ok   quantized                     512x1024   t_p2_r2      err 3.75e-08
+ok   quantized                     512x1024   t_p2_r4      err 3.75e-08
+ok   quantized                     512x1024   t_p4_r1      err 3.75e-08
+ok   quantized                     512x1024   t_p4_r2      err 3.75e-08
+ok   quantized                     512x1024   t_p4_r4      err 3.75e-08
+ok   quantized                     512x1024   t_p8_r1      err 3.75e-08
+ok   quantized                     512x1024   t_p8_r2      err 3.75e-08
+ok   quantized                     512x1024   t_loop_b1_h8 err 3.75e-08
+ok   quantized                     512x1024   t_loop_b1_h16 err 3.75e-08
+ok   quantized                     512x1024   t_loop_b1_h32 err 3.75e-08
+ok   quantized                     512x1024   t_loop_b1_h64 err 3.75e-08
+ok   quantized                     512x1024   t_loop_b1_h128 err 3.75e-08
+ok   quantized                     512x1024   t_loop_b2_h8 err 3.75e-08
+ok   quantized                     512x1024   t_loop_b2_h16 err 3.75e-08
+ok   quantized                     512x1024   t_loop_b2_h32 err 3.75e-08
+ok   quantized                     512x1024   t_loop_b2_h64 err 3.75e-08
+ok   quantized                     512x1024   t_loop_b2_h128 err 3.75e-08
+ok   quantized                     512x1024   t_loop_b4_h8 err 3.75e-08
+ok   quantized                     512x1024   t_loop_b4_h16 err 3.75e-08
+ok   quantized                     512x1024   t_loop_b4_h32 err 3.75e-08
+ok   quantized                     512x1024   t_loop_b4_h64 err 3.75e-08
+ok   quantized                     512x1024   t_loop_b4_h128 err 3.75e-08
+ok   quantized                     512x1024   t_loop_b8_h8 err 3.60e-08
+ok   quantized                     512x1024   t_loop_b8_h16 err 3.60e-08
+ok   quantized                     512x1024   t_loop_b8_h32 err 3.60e-08
+ok   quantized                     512x1024   t_loop_b8_h64 err 3.60e-08
+ok   quantized                     512x1024   t_loop_b8_h128 err 3.60e-08
+ok   quantized                     512x1024   t_oct_p1_c8  err 2.98e-08
+ok   quantized                     512x1024   t_oct_p1_c16 err 2.98e-08
+ok   quantized                     512x1024   t_oct_p1_c32 err 2.98e-08
+ok   quantized                     512x1024   t_oct_p1_c64 err 2.98e-08
+ok   quantized                     512x1024   t_oct_p2_c8  err 2.98e-08
+ok   quantized                     512x1024   t_oct_p2_c16 err 2.98e-08
+ok   quantized                     512x1024   t_oct_p2_c32 err 2.98e-08
+ok   quantized                     512x1024   t_oct_p2_c64 err 2.98e-08
+ok   quantized                     512x1024   t_oct_p4_c8  err 2.98e-08
+ok   quantized                     512x1024   t_oct_p4_c16 err 2.98e-08
+ok   quantized                     512x1024   t_oct_p4_c32 err 2.98e-08
+ok   quantized                     512x1024   t_oct_p4_c64 err 2.98e-08
+ok   quantized                     512x1024   t_oct_p8_c8  err 2.98e-08
+ok   quantized                     512x1024   t_oct_p8_c16 err 2.98e-08
+ok   quantized                     512x1024   t_oct_p8_c32 err 2.98e-08
+ok   quantized                     512x1024   t_oct_p8_c64 err 2.98e-08
+ok   x = 0                         512x1024   s0_naive     err 0.00e+00
+ok   x = 0                         512x1024   s1_coalesced err 0.00e+00
+ok   x = 0                         512x1024   s2_vec16     err 0.00e+00
+ok   x = 0                         512x1024   s3_mantissa  err 0.00e+00
+ok   x = 0                         512x1024   s4_xregs     err 0.00e+00
+ok   x = 0                         512x1024   s5_tiled     err 0.00e+00
+ok   x = 0                         512x1024   s6_block     err 0.00e+00
+ok   x = 0                         512x1024   s7_loop      err 0.00e+00
+ok   x = 0                         512x1024   s8_octet     err 0.00e+00
+ok   x = 0                         512x1024   a3_xcontig   err 0.00e+00
+ok   x = 0                         512x1024   a7_convert   err 0.00e+00
+ok   x = 0                         512x1024   a8_convert   err 0.00e+00
+ok   x = 0                         512x1024   t_p1_r1      err 0.00e+00
+ok   x = 0                         512x1024   t_p1_r2      err 0.00e+00
+ok   x = 0                         512x1024   t_p1_r4      err 0.00e+00
+ok   x = 0                         512x1024   t_p2_r1      err 0.00e+00
+ok   x = 0                         512x1024   t_p2_r2      err 0.00e+00
+ok   x = 0                         512x1024   t_p2_r4      err 0.00e+00
+ok   x = 0                         512x1024   t_p4_r1      err 0.00e+00
+ok   x = 0                         512x1024   t_p4_r2      err 0.00e+00
+ok   x = 0                         512x1024   t_p4_r4      err 0.00e+00
+ok   x = 0                         512x1024   t_p8_r1      err 0.00e+00
+ok   x = 0                         512x1024   t_p8_r2      err 0.00e+00
+ok   x = 0                         512x1024   t_loop_b1_h8 err 0.00e+00
+ok   x = 0                         512x1024   t_loop_b1_h16 err 0.00e+00
+ok   x = 0                         512x1024   t_loop_b1_h32 err 0.00e+00
+ok   x = 0                         512x1024   t_loop_b1_h64 err 0.00e+00
+ok   x = 0                         512x1024   t_loop_b1_h128 err 0.00e+00
+ok   x = 0                         512x1024   t_loop_b2_h8 err 0.00e+00
+ok   x = 0                         512x1024   t_loop_b2_h16 err 0.00e+00
+ok   x = 0                         512x1024   t_loop_b2_h32 err 0.00e+00
+ok   x = 0                         512x1024   t_loop_b2_h64 err 0.00e+00
+ok   x = 0                         512x1024   t_loop_b2_h128 err 0.00e+00
+ok   x = 0                         512x1024   t_loop_b4_h8 err 0.00e+00
+ok   x = 0                         512x1024   t_loop_b4_h16 err 0.00e+00
+ok   x = 0                         512x1024   t_loop_b4_h32 err 0.00e+00
+ok   x = 0                         512x1024   t_loop_b4_h64 err 0.00e+00
+ok   x = 0                         512x1024   t_loop_b4_h128 err 0.00e+00
+ok   x = 0                         512x1024   t_loop_b8_h8 err 0.00e+00
+ok   x = 0                         512x1024   t_loop_b8_h16 err 0.00e+00
+ok   x = 0                         512x1024   t_loop_b8_h32 err 0.00e+00
+ok   x = 0                         512x1024   t_loop_b8_h64 err 0.00e+00
+ok   x = 0                         512x1024   t_loop_b8_h128 err 0.00e+00
+ok   x = 0                         512x1024   t_oct_p1_c8  err 0.00e+00
+ok   x = 0                         512x1024   t_oct_p1_c16 err 0.00e+00
+ok   x = 0                         512x1024   t_oct_p1_c32 err 0.00e+00
+ok   x = 0                         512x1024   t_oct_p1_c64 err 0.00e+00
+ok   x = 0                         512x1024   t_oct_p2_c8  err 0.00e+00
+ok   x = 0                         512x1024   t_oct_p2_c16 err 0.00e+00
+ok   x = 0                         512x1024   t_oct_p2_c32 err 0.00e+00
+ok   x = 0                         512x1024   t_oct_p2_c64 err 0.00e+00
+ok   x = 0                         512x1024   t_oct_p4_c8  err 0.00e+00
+ok   x = 0                         512x1024   t_oct_p4_c16 err 0.00e+00
+ok   x = 0                         512x1024   t_oct_p4_c32 err 0.00e+00
+ok   x = 0                         512x1024   t_oct_p4_c64 err 0.00e+00
+ok   x = 0                         512x1024   t_oct_p8_c8  err 0.00e+00
+ok   x = 0                         512x1024   t_oct_p8_c16 err 0.00e+00
+ok   x = 0                         512x1024   t_oct_p8_c32 err 0.00e+00
+ok   x = 0                         512x1024   t_oct_p8_c64 err 0.00e+00
+ok   x = 1                         512x1024   s0_naive     err 0.00e+00
+ok   x = 1                         512x1024   s1_coalesced err 0.00e+00
+ok   x = 1                         512x1024   s2_vec16     err 0.00e+00
+ok   x = 1                         512x1024   s3_mantissa  err 0.00e+00
+ok   x = 1                         512x1024   s4_xregs     err 0.00e+00
+ok   x = 1                         512x1024   s5_tiled     err 0.00e+00
+ok   x = 1                         512x1024   s6_block     err 0.00e+00
+ok   x = 1                         512x1024   s7_loop      err 0.00e+00
+ok   x = 1                         512x1024   s8_octet     err 0.00e+00
+ok   x = 1                         512x1024   a3_xcontig   err 0.00e+00
+ok   x = 1                         512x1024   a7_convert   err 0.00e+00
+ok   x = 1                         512x1024   a8_convert   err 0.00e+00
+ok   x = 1                         512x1024   t_p1_r1      err 0.00e+00
+ok   x = 1                         512x1024   t_p1_r2      err 0.00e+00
+ok   x = 1                         512x1024   t_p1_r4      err 0.00e+00
+ok   x = 1                         512x1024   t_p2_r1      err 0.00e+00
+ok   x = 1                         512x1024   t_p2_r2      err 0.00e+00
+ok   x = 1                         512x1024   t_p2_r4      err 0.00e+00
+ok   x = 1                         512x1024   t_p4_r1      err 0.00e+00
+ok   x = 1                         512x1024   t_p4_r2      err 0.00e+00
+ok   x = 1                         512x1024   t_p4_r4      err 0.00e+00
+ok   x = 1                         512x1024   t_p8_r1      err 0.00e+00
+ok   x = 1                         512x1024   t_p8_r2      err 0.00e+00
+ok   x = 1                         512x1024   t_loop_b1_h8 err 0.00e+00
+ok   x = 1                         512x1024   t_loop_b1_h16 err 0.00e+00
+ok   x = 1                         512x1024   t_loop_b1_h32 err 0.00e+00
+ok   x = 1                         512x1024   t_loop_b1_h64 err 0.00e+00
+ok   x = 1                         512x1024   t_loop_b1_h128 err 0.00e+00
+ok   x = 1                         512x1024   t_loop_b2_h8 err 0.00e+00
+ok   x = 1                         512x1024   t_loop_b2_h16 err 0.00e+00
+ok   x = 1                         512x1024   t_loop_b2_h32 err 0.00e+00
+ok   x = 1                         512x1024   t_loop_b2_h64 err 0.00e+00
+ok   x = 1                         512x1024   t_loop_b2_h128 err 0.00e+00
+ok   x = 1                         512x1024   t_loop_b4_h8 err 0.00e+00
+ok   x = 1                         512x1024   t_loop_b4_h16 err 0.00e+00
+ok   x = 1                         512x1024   t_loop_b4_h32 err 0.00e+00
+ok   x = 1                         512x1024   t_loop_b4_h64 err 0.00e+00
+ok   x = 1                         512x1024   t_loop_b4_h128 err 0.00e+00
+ok   x = 1                         512x1024   t_loop_b8_h8 err 0.00e+00
+ok   x = 1                         512x1024   t_loop_b8_h16 err 0.00e+00
+ok   x = 1                         512x1024   t_loop_b8_h32 err 0.00e+00
+ok   x = 1                         512x1024   t_loop_b8_h64 err 0.00e+00
+ok   x = 1                         512x1024   t_loop_b8_h128 err 0.00e+00
+ok   x = 1                         512x1024   t_oct_p1_c8  err 0.00e+00
+ok   x = 1                         512x1024   t_oct_p1_c16 err 0.00e+00
+ok   x = 1                         512x1024   t_oct_p1_c32 err 0.00e+00
+ok   x = 1                         512x1024   t_oct_p1_c64 err 0.00e+00
+ok   x = 1                         512x1024   t_oct_p2_c8  err 0.00e+00
+ok   x = 1                         512x1024   t_oct_p2_c16 err 0.00e+00
+ok   x = 1                         512x1024   t_oct_p2_c32 err 0.00e+00
+ok   x = 1                         512x1024   t_oct_p2_c64 err 0.00e+00
+ok   x = 1                         512x1024   t_oct_p4_c8  err 0.00e+00
+ok   x = 1                         512x1024   t_oct_p4_c16 err 0.00e+00
+ok   x = 1                         512x1024   t_oct_p4_c32 err 0.00e+00
+ok   x = 1                         512x1024   t_oct_p4_c64 err 0.00e+00
+ok   x = 1                         512x1024   t_oct_p8_c8  err 0.00e+00
+ok   x = 1                         512x1024   t_oct_p8_c16 err 0.00e+00
+ok   x = 1                         512x1024   t_oct_p8_c32 err 0.00e+00
+ok   x = 1                         512x1024   t_oct_p8_c64 err 0.00e+00
+ok   x large positive              512x1024   s0_naive     err 5.93e-08
+ok   x large positive              512x1024   s1_coalesced err 7.88e-09
+ok   x large positive              512x1024   s2_vec16     err 1.61e-08
+ok   x large positive              512x1024   s3_mantissa  err 1.76e-07
+ok   x large positive              512x1024   s4_xregs     err 1.55e-07
+ok   x large positive              512x1024   s5_tiled     err 1.55e-07
+ok   x large positive              512x1024   s6_block     err 1.55e-07
+ok   x large positive              512x1024   s7_loop      err 1.59e-07
+ok   x large positive              512x1024   s8_octet     err 3.28e-08
+ok   x large positive              512x1024   a3_xcontig   err 1.55e-07
+ok   x large positive              512x1024   a7_convert   err 6.62e-09
+ok   x large positive              512x1024   a8_convert   err 4.51e-09
+ok   x large positive              512x1024   t_p1_r1      err 1.55e-07
+ok   x large positive              512x1024   t_p1_r2      err 1.55e-07
+ok   x large positive              512x1024   t_p1_r4      err 1.55e-07
+ok   x large positive              512x1024   t_p2_r1      err 1.55e-07
+ok   x large positive              512x1024   t_p2_r2      err 1.55e-07
+ok   x large positive              512x1024   t_p2_r4      err 1.55e-07
+ok   x large positive              512x1024   t_p4_r1      err 1.55e-07
+ok   x large positive              512x1024   t_p4_r2      err 1.55e-07
+ok   x large positive              512x1024   t_p4_r4      err 1.55e-07
+ok   x large positive              512x1024   t_p8_r1      err 1.55e-07
+ok   x large positive              512x1024   t_p8_r2      err 1.55e-07
+ok   x large positive              512x1024   t_loop_b1_h8 err 1.51e-07
+ok   x large positive              512x1024   t_loop_b1_h16 err 1.51e-07
+ok   x large positive              512x1024   t_loop_b1_h32 err 1.51e-07
+ok   x large positive              512x1024   t_loop_b1_h64 err 1.51e-07
+ok   x large positive              512x1024   t_loop_b1_h128 err 1.51e-07
+ok   x large positive              512x1024   t_loop_b2_h8 err 1.51e-07
+ok   x large positive              512x1024   t_loop_b2_h16 err 1.51e-07
+ok   x large positive              512x1024   t_loop_b2_h32 err 1.51e-07
+ok   x large positive              512x1024   t_loop_b2_h64 err 1.51e-07
+ok   x large positive              512x1024   t_loop_b2_h128 err 1.51e-07
+ok   x large positive              512x1024   t_loop_b4_h8 err 1.51e-07
+ok   x large positive              512x1024   t_loop_b4_h16 err 1.51e-07
+ok   x large positive              512x1024   t_loop_b4_h32 err 1.51e-07
+ok   x large positive              512x1024   t_loop_b4_h64 err 1.51e-07
+ok   x large positive              512x1024   t_loop_b4_h128 err 1.51e-07
+ok   x large positive              512x1024   t_loop_b8_h8 err 1.59e-07
+ok   x large positive              512x1024   t_loop_b8_h16 err 1.59e-07
+ok   x large positive              512x1024   t_loop_b8_h32 err 1.59e-07
+ok   x large positive              512x1024   t_loop_b8_h64 err 1.59e-07
+ok   x large positive              512x1024   t_loop_b8_h128 err 1.59e-07
+ok   x large positive              512x1024   t_oct_p1_c8  err 3.28e-08
+ok   x large positive              512x1024   t_oct_p1_c16 err 3.28e-08
+ok   x large positive              512x1024   t_oct_p1_c32 err 3.28e-08
+ok   x large positive              512x1024   t_oct_p1_c64 err 3.28e-08
+ok   x large positive              512x1024   t_oct_p2_c8  err 3.28e-08
+ok   x large positive              512x1024   t_oct_p2_c16 err 3.28e-08
+ok   x large positive              512x1024   t_oct_p2_c32 err 3.28e-08
+ok   x large positive              512x1024   t_oct_p2_c64 err 3.28e-08
+ok   x large positive              512x1024   t_oct_p4_c8  err 3.28e-08
+ok   x large positive              512x1024   t_oct_p4_c16 err 3.28e-08
+ok   x large positive              512x1024   t_oct_p4_c32 err 3.28e-08
+ok   x large positive              512x1024   t_oct_p4_c64 err 3.28e-08
+ok   x large positive              512x1024   t_oct_p8_c8  err 3.28e-08
+ok   x large positive              512x1024   t_oct_p8_c16 err 3.28e-08
+ok   x large positive              512x1024   t_oct_p8_c32 err 3.28e-08
+ok   x large positive              512x1024   t_oct_p8_c64 err 3.28e-08
+1121 checks, 0 failures, tolerance 1e-06 of the row bound

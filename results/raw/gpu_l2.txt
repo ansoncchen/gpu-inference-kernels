@@ -1,0 +1,13 @@
+NVIDIA GeForce RTX 2080 Ti, 68 SMs, 11.3 GB
+s0_naive                 2048x4096      382.69 us  [p5 381.31 p95 383.33]     12.3 GB/s  lat 384.3 us  err 1.0e-07
+s1_coalesced             2048x4096       18.43 us  [p5 18.18 p95 18.88]    256.0 GB/s  lat 20.7 us  err 1.1e-08
+s2_vec16                 2048x4096       39.36 us  [p5 38.91 p95 40.48]    119.9 GB/s  lat 41.4 us  err 9.3e-09
+s3_mantissa              2048x4096       42.05 us  [p5 41.12 p95 42.94]    112.2 GB/s  lat 43.9 us  err 3.9e-08
+s4_xregs                 2048x4096       22.11 us  [p5 21.02 p95 22.53]    213.4 GB/s  lat 23.5 us  err 3.6e-08
+a3_xcontig               2048x4096       14.14 us  [p5 13.06 p95 14.34]    333.6 GB/s  lat 15.9 us  err 3.4e-08
+s5_tiled                 2048x4096       20.54 us  [p5 20.42 p95 21.79]    229.7 GB/s  lat 22.3 us  err 3.6e-08
+s6_block                 2048x4096       30.98 us  [p5 30.72 p95 32.06]    152.3 GB/s  lat 33.1 us  err 3.6e-08
+s7_loop                  2048x4096       10.08 us  [p5 9.06 p95 10.24]    468.1 GB/s  lat 11.9 us  err 3.5e-08
+a7_convert               2048x4096       11.23 us  [p5 10.40 p95 12.16]    420.1 GB/s  lat 13.3 us  err 6.9e-09
+s8_octet                 2048x4096        8.61 us  [p5 8.19 p95 9.60]    548.2 GB/s  lat 10.6 us  err 1.7e-08
+a8_convert               2048x4096       10.02 us  [p5 8.96 p95 10.24]    471.1 GB/s  lat 12.1 us  err 6.2e-09

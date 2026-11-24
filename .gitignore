@@ -1,0 +1,6 @@
+build/
+third_party/
+*.o
+__pycache__/
+.DS_Store
+models/

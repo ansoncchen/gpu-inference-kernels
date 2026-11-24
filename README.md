@@ -146,6 +146,6 @@ The llama.cpp baseline needs `-DLLAMA_DIR=<checkout with build/>` (commit in `re
 ## Layout
 
 `include/`, `src/`: format, reference, GPU kernels (`gpu_kernels.cu`), CPU kernels. `bench/`, `baselines/`: harnesses. `tests/`: correctness.
-`decode/`: the model engine. `docs/explain.md`: each kernel step in plain terms. `results/`: raw data and tables.
+`decode/`: the model engine. `docs/explain.md`: design notes for each step. `results/`: raw data and tables.
 
 Built with Claude Code.

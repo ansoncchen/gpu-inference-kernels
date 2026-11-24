@@ -1,0 +1,4 @@
+{"run":"ppl","mode":"fp16","window":512,"tokens":10200,"ppl":8.72587}
+{"run":"ppl","mode":"int4","window":512,"tokens":10200,"ppl":9.78456}
+{"run":"ppl","mode":"int4s","window":512,"tokens":10200,"ppl":9.64281}
+{"run":"ppl","mode":"int4sh","window":512,"tokens":10200,"ppl":9.27905}

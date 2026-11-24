@@ -142,4 +142,28 @@ Measured peak read bandwidth: 51.4 GB/s.
 | c1_avx2 | 225 (32) | 549 (16) | 841 (32) | 44.9 | 87% |
 | c2_avx2_int8x | 220 (16) | 571 (32) | 838 (16) | 45.0 | 88% |
 
-8192x8192: AVX2 INT4 is 7.8x faster than OpenBLAS FP32; the GPU s8 kernel is 12.2x faster than AVX2 INT4, and the measured bandwidths differ by 11.4x.
+8192x8192: AVX2 INT4 is 6.3x faster than the better FP32 baseline (7.8x vs OpenBLAS, 3.0x vs plain C++ INT4); the GPU s8 kernel is 12.2x faster than AVX2 INT4, and the measured bandwidths differ by 11.4x.
+
+## Decode: Qwen2.5-1.5B, greedy, one sequence, 30-token prompt + 256 new tokens
+
+| engine | weights | GB read per token | tok/s |
+|---|---|---:|---:|
+| this repo | fp16 | 3.087 | 159.0 |
+| this repo | int4s | 0.868 | 416.9 |
+| this repo | int4sh | 1.204 | 337.9 |
+| Hugging Face transformers, PyTorch 2.14.1+cu126 | fp16 |  | 43.0 |
+| llama.cpp llama-bench (best of flash-attn on/off; no prompt) | f16 | | 144.0 |
+| llama.cpp llama-bench (best of flash-attn on/off; no prompt) | q4_0 | | 305.5 |
+
+int4s / fp16 in this repo: 2.62x.
+
+## Perplexity, WikiText-2 test, 40 windows of 512, second half scored
+
+| engine | weights | ppl | change vs FP16 |
+|---|---|---:|---:|
+| this repo | fp16 | 8.726 | +0.0% |
+| this repo | int4 | 9.785 | +12.1% |
+| this repo | int4s | 9.643 | +10.5% |
+| this repo | int4sh | 9.279 | +6.3% |
+| llama.cpp | f16 | 8.736 | +0.0% |
+| llama.cpp | q4_0 | 9.456 | +8.3% |

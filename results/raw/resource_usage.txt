@@ -1,0 +1,69 @@
+k_block<1, 1>(uint4 const*, uint4 const*, float const*, float*, int, int, int)	Used 85 registers
+k_block<1, 2>(uint4 const*, uint4 const*, float const*, float*, int, int, int)	Used 86 registers
+k_block<1, 4>(uint4 const*, uint4 const*, float const*, float*, int, int, int)	Used 86 registers
+k_block<2, 1>(uint4 const*, uint4 const*, float const*, float*, int, int, int)	Used 96 registers
+k_block<2, 2>(uint4 const*, uint4 const*, float const*, float*, int, int, int)	Used 104 registers
+k_block<2, 4>(uint4 const*, uint4 const*, float const*, float*, int, int, int)	Used 104 registers
+k_block<4, 1>(uint4 const*, uint4 const*, float const*, float*, int, int, int)	Used 96 registers
+k_block<4, 2>(uint4 const*, uint4 const*, float const*, float*, int, int, int)	Used 104 registers
+k_block<4, 4>(uint4 const*, uint4 const*, float const*, float*, int, int, int)	Used 104 registers
+k_block<8, 1>(uint4 const*, uint4 const*, float const*, float*, int, int, int)	Used 96 registers
+k_block<8, 2>(uint4 const*, uint4 const*, float const*, float*, int, int, int)	Used 108 registers
+k_coalesced(unsigned char const*, unsigned short const*, float const*, float*, int, int)	Used 45 registers
+k_empty()	Used 4 registers
+k_fma(float*, int, float, float)	Used 20 registers
+k_loop<1, 128, false>(uint4 const*, unsigned short const*, float const*, float*, int, int, int)	Used 53 registers
+k_loop<1, 16, false>(uint4 const*, unsigned short const*, float const*, float*, int, int, int)	Used 53 registers
+k_loop<1, 32, false>(uint4 const*, unsigned short const*, float const*, float*, int, int, int)	Used 53 registers
+k_loop<1, 64, false>(uint4 const*, unsigned short const*, float const*, float*, int, int, int)	Used 53 registers
+k_loop<1, 8, false>(uint4 const*, unsigned short const*, float const*, float*, int, int, int)	Used 53 registers
+k_loop<2, 128, false>(uint4 const*, unsigned short const*, float const*, float*, int, int, int)	Used 59 registers
+k_loop<2, 16, false>(uint4 const*, unsigned short const*, float const*, float*, int, int, int)	Used 59 registers
+k_loop<2, 32, false>(uint4 const*, unsigned short const*, float const*, float*, int, int, int)	Used 61 registers
+k_loop<2, 64, false>(uint4 const*, unsigned short const*, float const*, float*, int, int, int)	Used 59 registers
+k_loop<2, 8, false>(uint4 const*, unsigned short const*, float const*, float*, int, int, int)	Used 59 registers
+k_loop<4, 128, false>(uint4 const*, unsigned short const*, float const*, float*, int, int, int)	Used 62 registers
+k_loop<4, 16, false>(uint4 const*, unsigned short const*, float const*, float*, int, int, int)	Used 62 registers
+k_loop<4, 32, false>(uint4 const*, unsigned short const*, float const*, float*, int, int, int)	Used 61 registers
+k_loop<4, 64, false>(uint4 const*, unsigned short const*, float const*, float*, int, int, int)	Used 62 registers
+k_loop<4, 8, false>(uint4 const*, unsigned short const*, float const*, float*, int, int, int)	Used 62 registers
+k_loop<8, 128, false>(uint4 const*, unsigned short const*, float const*, float*, int, int, int)	Used 66 registers
+k_loop<8, 16, false>(uint4 const*, unsigned short const*, float const*, float*, int, int, int)	Used 66 registers
+k_loop<8, 16, true>(uint4 const*, unsigned short const*, float const*, float*, int, int, int)	Used 66 registers
+k_loop<8, 32, false>(uint4 const*, unsigned short const*, float const*, float*, int, int, int)	Used 66 registers
+k_loop<8, 64, false>(uint4 const*, unsigned short const*, float const*, float*, int, int, int)	Used 66 registers
+k_loop<8, 8, false>(uint4 const*, unsigned short const*, float const*, float*, int, int, int)	Used 78 registers
+k_naive(unsigned char const*, unsigned short const*, float const*, float*, int, int)	Used 33 registers
+k_octet<1, 1048576, false>(uint4 const*, uint4 const*, float4 const*, float*, int, int, int)	Used 52 registers
+k_octet<1, 16, false>(uint4 const*, uint4 const*, float4 const*, float*, int, int, int)	Used 52 registers
+k_octet<1, 32, false>(uint4 const*, uint4 const*, float4 const*, float*, int, int, int)	Used 52 registers
+k_octet<1, 64, false>(uint4 const*, uint4 const*, float4 const*, float*, int, int, int)	Used 52 registers
+k_octet<1, 8, false>(uint4 const*, uint4 const*, float4 const*, float*, int, int, int)	Used 52 registers
+k_octet<2, 1048576, false>(uint4 const*, uint4 const*, float4 const*, float*, int, int, int)	Used 64 registers
+k_octet<2, 1048576, true>(uint4 const*, uint4 const*, float4 const*, float*, int, int, int)	Used 62 registers
+k_octet<2, 16, false>(uint4 const*, uint4 const*, float4 const*, float*, int, int, int)	Used 64 registers
+k_octet<2, 32, false>(uint4 const*, uint4 const*, float4 const*, float*, int, int, int)	Used 64 registers
+k_octet<2, 64, false>(uint4 const*, uint4 const*, float4 const*, float*, int, int, int)	Used 64 registers
+k_octet<2, 8, false>(uint4 const*, uint4 const*, float4 const*, float*, int, int, int)	Used 64 registers
+k_octet<2, 8, true>(uint4 const*, uint4 const*, float4 const*, float*, int, int, int)	Used 62 registers
+k_octet<4, 1048576, false>(uint4 const*, uint4 const*, float4 const*, float*, int, int, int)	Used 78 registers
+k_octet<4, 16, false>(uint4 const*, uint4 const*, float4 const*, float*, int, int, int)	Used 78 registers
+k_octet<4, 32, false>(uint4 const*, uint4 const*, float4 const*, float*, int, int, int)	Used 78 registers
+k_octet<4, 64, false>(uint4 const*, uint4 const*, float4 const*, float*, int, int, int)	Used 78 registers
+k_octet<4, 8, false>(uint4 const*, uint4 const*, float4 const*, float*, int, int, int)	Used 78 registers
+k_octet<8, 1048576, false>(uint4 const*, uint4 const*, float4 const*, float*, int, int, int)	Used 128 registers
+k_octet<8, 16, false>(uint4 const*, uint4 const*, float4 const*, float*, int, int, int)	Used 128 registers
+k_octet<8, 32, false>(uint4 const*, uint4 const*, float4 const*, float*, int, int, int)	Used 128 registers
+k_octet<8, 64, false>(uint4 const*, uint4 const*, float4 const*, float*, int, int, int)	Used 128 registers
+k_octet<8, 8, false>(uint4 const*, uint4 const*, float4 const*, float*, int, int, int)	Used 128 registers
+k_read<uint2>(uint2 const*, unsigned long, unsigned int*)	Used 46 registers
+k_read<uint4>(uint4 const*, unsigned long, unsigned int*)	Used 62 registers
+k_read<unsigned char>(unsigned char const*, unsigned long, unsigned int*)	Used 30 registers
+k_read<unsigned int>(unsigned int const*, unsigned long, unsigned int*)	Used 30 registers
+k_tiled(uint4 const*, uint4 const*, float const*, float*, int, int, int)	Used 109 registers
+k_vec16<false, false>(uint4 const*, unsigned short const*, float const*, float const*, float*, int, int)	Used 61 registers
+k_vec16<true, false>(uint4 const*, unsigned short const*, float const*, float const*, float*, int, int)	Used 59 registers
+k_vec16<true, true>(uint4 const*, unsigned short const*, float const*, float const*, float*, int, int)	Used 59 registers
+k_xregs(uint4 const*, unsigned short const*, float const*, float*, int, int)	Used 58 registers
+k_xsum(float const*, float*, int)	Used 63 registers
+k_xtranspose(float4 const*, float4*, float*, int)	Used 40 registers
